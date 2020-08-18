@@ -7,6 +7,19 @@
     <script src="Js/jquery-3.3.1.js"></script>
     <script>
         $(function () {
+
+            $("#a1").click(function () {
+
+                if($('#div1').css('display')=='block'){
+                    $('#div1').css('display','none');
+                }
+                if($('#div1').css('display')=='none'){
+                    $('#div1').css('display','block');
+                }
+
+
+            })
+
             $.ajax({
                 url:"findUser/infor",
                 dataType:"json",
@@ -17,9 +30,28 @@
 
                 }
             })
+
+            $("#look").click(function () {
+                $.ajax({
+                    url:"operation/Lookfen",
+                    dataType:"json",
+                    type:"get",
+                    async: false,
+                    success:function (data) {
+                    if(data.length==0) alert("您暂时还无评分!");
+                    else{
+                        alert("      当前有"+data.num+"人参与评分\n\n"+"      平均得分:"+data.eval+"分\n\n      最高分"+data.max+"分\n\n      最低分"+data.min+"分\n\n")
+                    }
+
+                    }
+                })
+
+            })
         })
 
     </script>
+
+
 </head>
 <body>
 <div id='box'>
@@ -31,17 +63,30 @@
 
     </div>
     <div id='nav'>
-        <ul type='none' style="font-size:25px;margin-left:2px;margin-top:100px;">
-            <li><a href="Berepaired.html">待维修记录</a></li>
-            <li><a href="Dorepaired.html">已完成维修记录</a></li>
-            <li><a href="">查看历史评分</a></li>
-            <li><a href="">修改个人信息</a></li>
-            <li><a href="">填写报销单</a></li>
-            <li><a href="LinkAdmin.html">联系管理员</a></li>
+        <ul type='none' style="font-size:15px;margin-left:2px;margin-top:15px;">
+            <table>
+                <th><a href="Berepaired.html">待维修记录</a></th>
+                <th><a href="Dorepaired.html">已完成维修记录</a></th>
+                <th><a href="javascript:void(0)" id="look">查看历史评分</a></th>
+                <th><a id="a1" href="javascript:void(0)">修改个人信息</a>
+                    <div id="div1" style="display: none">
+                        <p><a href="modif_worker.html?num=1"  >修改基本信息</a></p>
+                        <p> <a href="modif_worker.html?num=2" >修改密码</a> </p>
+                    </div>
+                </th>
+                <th><a href="">填写报销单</a></th>
+                <th><a href="LinkAdmin.html">联系管理员</a></th>
+            </table>
+
         </ul>
     </div>
+
     <div id='main'>
-        <p style='font-size:60px;margin-left:200px;margin-top:200px;'>主体区域</p>
+
+
+
+
+
     </div>
     <div id='footer'>
         <span style='font-size:20px;margin-left:400px;'>页脚区域</span>

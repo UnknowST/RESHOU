@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="Commit Message">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/body.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/body.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modif_worker.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modif_worker.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/worker_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/worker_index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="CSS File" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal -Dfile.encoding=UTF-8" />
+  </component>
+  <component name="ProjectId" id="1fZkAxg9p9YBbfoDY01wzWvpJj0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.5407685" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.30812103" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.web.servlet" />
+      <recent name="cn.web.filter" />
+      <recent name="cn.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaWeb\RESHOU\src\main\webapp" />
+      <recent name="D:\javaWeb\RESHOU\src\main\webapp\css" />
+      <recent name="D:\javaWeb\RESHOU\src\main\webapp\Js" />
+      <recent name="D:\javaWeb\RESHOU\src\main\resources" />
+      <recent name="D:\javaWeb\RESHOU\src\main\java\cn\web" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.[tomcat7:run]">
+    <configuration name="jdbcTest.MesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RESHOU" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.jdbcTest" />
+      <option name="METHOD_NAME" value="MesTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jdbcTest.jdbctest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RESHOU" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.jdbcTest" />
+      <option name="METHOD_NAME" value="jdbctest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jdbcTest.loginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RESHOU" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.jdbcTest" />
+      <option name="METHOD_NAME" value="loginTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jdbcTest.seachuser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RESHOU" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.jdbcTest" />
+      <option name="METHOD_NAME" value="seachuser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="[tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="tomcat7:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.jdbcTest.jdbctest" />
+      <item itemvalue="JUnit.jdbcTest.loginTest" />
+      <item itemvalue="JUnit.jdbcTest.seachuser" />
+      <item itemvalue="JUnit.jdbcTest.MesTest" />
+      <item itemvalue="Maven.[tomcat7:run]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.jdbcTest.MesTest" />
+        <item itemvalue="JUnit.jdbcTest.seachuser" />
+        <item itemvalue="JUnit.jdbcTest.loginTest" />
+        <item itemvalue="JUnit.jdbcTest.jdbctest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpringBeansView">
+    <option name="showModules" value="false" />
+    <option name="showImplicitBeans" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="" />
+      <created>1596432862353</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596432862353</updated>
+      <workItem from="1596432866572" duration="7179000" />
+      <workItem from="1596607042384" duration="3076000" />
+      <workItem from="1596611626601" duration="28589000" />
+      <workItem from="1596712374117" duration="2456000" />
+      <workItem from="1596714901336" duration="1225000" />
+      <workItem from="1596716441097" duration="1162000" />
+      <workItem from="1596717625394" duration="1251000" />
+      <workItem from="1596718918876" duration="661000" />
+      <workItem from="1596719592256" duration="921000" />
+      <workItem from="1596720537348" duration="1545000" />
+      <workItem from="1596722713247" duration="7639000" />
+      <workItem from="1596785549718" duration="1241000" />
+      <workItem from="1597370741819" duration="557000" />
+      <workItem from="1597371581365" duration="9412000" />
+      <workItem from="1597416840413" duration="7123000" />
+      <workItem from="1597557831667" duration="24039000" />
+      <workItem from="1597654965294" duration="37580000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit Message">
+      <created>1597719920789</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597719920789</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit Message">
+      <created>1597722041949</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597722041949</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Commit Message">
+      <created>1597722100659</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597722100659</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Commit Message">
+      <created>1597727963772</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597727963773</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Commit Message">
+      <created>1597728230541</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597728230541</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit Message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit Message" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="498" y="0" key="#Project_Structure" timestamp="1596433991556">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1596433991556" />
+    <state x="447" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597566121380">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="447" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1597566121380" />
+    <state x="914" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596641869805">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="914" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1596641869805" />
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1597735633089">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596612153801" />
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597735633089" />
+    <state x="449" y="95" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1596768829472">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="95" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1596768829472" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597677455245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596613196055" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597677455245" />
+    <state x="490" y="310" width="406" height="262" key="Github.ShareDialog" timestamp="1597721251388">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="490" y="310" width="406" height="262" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1597721251388" />
+    <state width="1338" height="121" key="GridCell.Tab.0.bottom" timestamp="1597737412096">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1338" height="121" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597737412096" />
+    <state width="1338" height="121" key="GridCell.Tab.0.center" timestamp="1597737412095">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1338" height="121" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
+    <state width="1338" height="121" key="GridCell.Tab.0.left" timestamp="1597737412095">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1338" height="121" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
+    <state width="1338" height="121" key="GridCell.Tab.0.right" timestamp="1597737412095">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1338" height="121" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
+    <state width="1493" height="436" key="GridCell.Tab.1.bottom" timestamp="1597637461393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="436" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597637461393" />
+    <state width="1493" height="436" key="GridCell.Tab.1.center" timestamp="1597637461393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="436" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597637461393" />
+    <state width="1493" height="436" key="GridCell.Tab.1.left" timestamp="1597637461392">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="436" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597637461392" />
+    <state width="1493" height="436" key="GridCell.Tab.1.right" timestamp="1597637461393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="436" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597637461393" />
+    <state x="317" y="70" key="Maven.ArtifactSearchDialog" timestamp="1597639829415">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="317" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1597639829415" />
+    <state x="127" y="0" width="1270" height="824" key="SettingsEditor" timestamp="1597719665640">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="127" y="0" width="1270" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597719665640" />
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2" timestamp="1597728248621">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597728248621" />
+    <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597722244547">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1597722244547" />
+    <state x="178" y="73" key="new project wizard" timestamp="1597645647874">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="73" key="new project wizard/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596613222028" />
+    <state x="178" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597645647874" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1596603276562">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596603276562" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597733780241">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597733780241" />
+    <state x="470" y="95" key="spring file set editor" timestamp="1596767745665">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="470" y="95" key="spring file set editor/0.0.1536.824@0.0.1536.824" timestamp="1596767745665" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Test/jdbcTest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
+          <line>254</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/Test/jdbcTest.java</url>
+          <line>19</line>
+          <properties class="Test.jdbcTest" method="jdbctest">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/service/LoginService.java</url>
+          <line>11</line>
+          <properties class="cn.service.LoginService" method="Userlogin">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/Test/jdbcTest.java</url>
+          <line>28</line>
+          <properties class="Test.jdbcTest" method="loginTest">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
+          <line>29</line>
+          <properties class="cn.web.servlet.loginServlet" method="service">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
+          <line>233</line>
+          <properties class="cn.web.servlet.loginServlet" method="service">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Infor_details.html</url>
+          <line>45</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Berepaired.html</url>
+          <line>43</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((Logindaoimpl)logindao).template" custom="cn.daomain.impl.Logindaoimpl" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
