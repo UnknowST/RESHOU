@@ -96,4 +96,40 @@ public class Operationdaoimpl implements Operationdao {
         if(n==1&&m==1) return 1;
         else  return 0;
     }
+
+    @Override
+    public Map<String, String> Lookfen(String workerid) {
+        //查询累计得分
+        String sql="select sum(evaluate) from infor where workerid=?";
+        //查询最高分
+        String sql1="select max(evaluate) from infor where workerid=?";
+        //查询最低分
+        String sql2="select min(evaluate) from infor where workerid=?";
+        //计数参与评分的人数
+        String sql3="SELECT COUNT(cid) FROM infor WHERE workerid=? AND evaluate<>0";
+        //jdbc查询返回string 类型
+        String sum=template.queryForObject(sql,String.class,workerid);
+        String max=template.queryForObject(sql1,String.class,workerid);
+        String min=template.queryForObject(sql2,String.class,workerid);
+        String num=template.queryForObject(sql3,String.class,workerid);
+        //计算平均分
+        String eval=String.valueOf(Double.valueOf(sum)/Double.valueOf(num));
+        //更新工人的累计得分
+        int n=template.update("update worker set sum_eval=? where id=?",eval,workerid);
+        //构造map集合
+        Map map1=new HashMap();
+
+        //判断是否更新成功
+        if(n==1) {
+            map1.put("max",max);
+            map1.put("min",min);
+            map1.put("num",num);
+            map1.put("eval",eval);
+        }else
+            return map1;
+
+        return map1;
+
+
+    }
 }

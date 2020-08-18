@@ -77,4 +77,11 @@ public interface OperationService {
      * @return
      */
     int Reinfor(String num,String userid,String workerid,String status);
+
+    /**
+     * 工人查看分数 根据workerid
+     * @param workerid
+     * @return
+     */
+    Map<String,String> Lookfen(String workerid);
 }

@@ -35,6 +35,16 @@ public class Operationservlet extends BaseServlet{
     Gson gson=new Gson();
     //调用方法
     OperationService ops=new OperationServiceimpl();
+
+    /**
+     * 注册类
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Register(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         //1.生成用户对象
@@ -77,7 +87,15 @@ public class Operationservlet extends BaseServlet{
         response.getWriter().write(gson.toJson(info));
     }
 
-
+    /**
+     * 提交维修表单
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Apply(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         Infor inf=new Infor();
@@ -153,6 +171,16 @@ public class Operationservlet extends BaseServlet{
 
 
     }
+
+    /**
+     * 用户查看维修记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Seeinfor(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
             Userinfor use1=new Userinfor();
@@ -161,6 +189,15 @@ public class Operationservlet extends BaseServlet{
             writeValue(list,response);
     }
 
+    /**
+     * 用户查看维修记录的详细信息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void infor_details(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         String num=request.getParameter("re");
@@ -170,6 +207,16 @@ public class Operationservlet extends BaseServlet{
 
         writeValue(map,response);
     }
+
+    /**
+     * 用户对工人进行评分
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Fenshu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
           String num=request.getParameter("num");
@@ -188,6 +235,16 @@ public class Operationservlet extends BaseServlet{
         response.getWriter().write(gson.toJson(info));
 
     }
+
+    /**
+     * 用户删除维修记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void DeleteInfor(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         String num=request.getParameter("num");
@@ -206,6 +263,16 @@ public class Operationservlet extends BaseServlet{
         response.getWriter().write(gson.toJson(info));
 
     }
+
+    /**
+     * 用户修改基本信息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void modif_user(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         String username=request.getParameter("username");
@@ -240,6 +307,15 @@ public class Operationservlet extends BaseServlet{
 
     }
 
+    /**
+     * 用户修改密码
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void modifpass(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         String password=request.getParameter("password");
@@ -273,6 +349,16 @@ public class Operationservlet extends BaseServlet{
         response.getWriter().write(gson.toJson(info));
 
     }
+
+    /**
+     * 工人查看维修记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Lookinfor(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
 
@@ -283,6 +369,15 @@ public class Operationservlet extends BaseServlet{
 
     }
 
+    /**
+     * 工人回复维修记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public void Reinfor(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
         String num=request.getParameter("num");
@@ -303,6 +398,24 @@ public class Operationservlet extends BaseServlet{
 
 
     }
+
+    /**
+     * 工人查看分数
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void Lookfen(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
+        Userinfor inf=new Userinfor();
+        Map<String,String> map=ops.Lookfen(inf.findid(request,response));
+        writeValue(map,response);
+
+    }
+
 
 
 

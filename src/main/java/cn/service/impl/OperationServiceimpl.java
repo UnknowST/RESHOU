@@ -55,4 +55,9 @@ public class OperationServiceimpl implements OperationService {
         return opdao.Reinfor(num,userid,workerid,status);
     }
 
+    @Override
+    public Map<String, String> Lookfen(String workerid) {
+        return opdao.Lookfen(workerid);
+    }
+
 }
