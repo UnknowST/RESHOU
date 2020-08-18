@@ -20,4 +20,6 @@ public interface Operationdao {
     List<Infor> Lookinfor(String workerid);
     int Reinfor(String num,String userid,String workerid,String status);
     Map<String,String> Lookfen(String workerid);
+    int modifworker(String workerid,String phone,String mail);
+    int modifwps(String workerid,String password,String password1);
 }

@@ -60,4 +60,15 @@ public class OperationServiceimpl implements OperationService {
         return opdao.Lookfen(workerid);
     }
 
+    @Override
+    public int modifworker(String workerid, String phone, String mail) {
+        return opdao.modifworker(workerid,phone,mail);
+    }
+
+    @Override
+    public int modifwps(String workerid, String password, String password1) {
+        return opdao.modifwps(workerid,password,password1);
+    }
+
+
 }

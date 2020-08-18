@@ -416,6 +416,93 @@ public class Operationservlet extends BaseServlet{
 
     }
 
+    /**
+     * 工人修改基本信息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void Modifworker(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
+        //获取验证码并校验
+        String check = request.getParameter("check");   //获取验证码
+        //获取用户id;
+        Userinfor infor=new Userinfor();
+        String id=infor.findid(request,response);
+        //从sesion中获取验证码
+        HttpSession session = request.getSession();
+        String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
+        session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
+        //比较
+        if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
+            //验证码错误
+            //登陆失败
+            info.setFlag(0);
+            info.setErrorMsg("验证码错误");
+        }else{
+            //获取需要修改的数据
+            String phone=request.getParameter("phone");
+            String mail=request.getParameter("mail");
+            if(ops.modifworker(id,phone,mail)==1){
+                info.setFlag(1);
+            }
+            else {
+                info.setFlag(0);
+                info.setErrorMsg("出现未知错误,信息修改失败!");
+            }
+        }
+        //json格式返回数据
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+    }
+
+    /**
+     * 工人修改密码
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void Modifwps(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
+        //获取数据流
+        String password=request.getParameter("password");
+        String password1=request.getParameter("password1");
+        //获取验证码并校验
+        String check = request.getParameter("check");   //获取验证码
+        //获取用户id;
+        Userinfor infor=new Userinfor();
+        //从sesion中获取验证码
+        HttpSession session = request.getSession();
+        String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
+        session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
+        //比较
+        if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
+            //验证码错误
+            //登陆失败
+            info.setFlag(0);
+            info.setErrorMsg("验证码错误");
+        }else {
+
+            if(ops.modifwps(infor.findid(request, response), password, password1)==1)
+             info.setFlag(1);
+
+            else {
+                     info.setFlag(0);
+                    info.setErrorMsg("密码修改失败，可能是原密码错误");
+    }
+            //json格式返回数据
+            response.setContentType("application/x-json;charset=utf-8");
+            response.getWriter().write(gson.toJson(info));
+
+
+    }}
+
 
 
 

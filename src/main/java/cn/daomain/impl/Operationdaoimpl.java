@@ -132,4 +132,14 @@ public class Operationdaoimpl implements Operationdao {
 
 
     }
+
+    @Override
+    public int modifworker(String workerid, String phone, String mail) {
+        return template.update("update worker set phone=?,mail=? where id=?",phone,mail,workerid);
+    }
+
+    @Override
+    public int modifwps(String workerid, String password, String password1) {
+        return template.update("update worker set password=? where id=? and password=?" ,password1,workerid,password);
+    }
 }
