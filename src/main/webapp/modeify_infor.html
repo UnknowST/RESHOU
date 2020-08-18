@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modify_infor</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //解析地址
+            function getnum(qs) {
+                var s=location.href;
+                s=s.replace("?","?&").split("&");
+                var re="";
+                for (i=1;i<s.length;i++){
+                    if(s[i].indexOf(qs+"=")==0){
+                        re=s[i].replace(qs+"=","");
+                    }
+                }
+                return re;
+            }
+            //获取编号
+            var re=getnum('num');
+           //获取原始数据据
+            $.ajax({
+                url:'operation/infor_details?re='+re+'',
+                type:"get",
+                dataType:"json",
+                data:re,
+                async:false,
+                success:function (data) {
+
+                    $("#place").val(data.Infor.place)
+                    $("#equip").val(data.Infor.equip)
+                    $("#detail").val(data.Infor.detail)
+                    if(data.Infor.imagepath!=null||data.Infor.imagepath!="")
+                    $("#td1").html('"<img src="'+data.Infor.imagepath+'"alt="图片不小心走丢了.....">')
+                    else $("#td1").html("没有上传图片..")
+
+
+
+
+
+                }
+            })
+
+        })
+
+
+    </script>
+</head>
+<body>
+
+
+    <form  id="form1" enctype="multipart/form-data">
+        <table>
+
+            <tr>
+                <td>
+                    <label for="place">地点:</label>
+
+                </td>
+                <td>
+                    <input type="text" id="place" name="place" placeholder="维修地点">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="equip">设备:</label>
+                </td>
+                <td>
+                    <input type="text" id="equip" name="equip" placeholder="维修设备">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="detail">详细信息:</label>
+                </td>
+                <td>
+                    <input type="text" id="detail" name="detail" placeholder="详细信息" style="width: 160px;height: 80px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="image">图片:</label>
+                </td>
+
+                <td id="td1">
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label for="image">重新上传图片:</label>
+                </td>
+
+                <td> <a href="javascript:void(0)" id="a1">选择图片</a>
+                    <input type="file" name="image" id="image" style="display: none"  >
+                    <span>仅限于png,jpg,jpeg图片上传</span>
+                </td>
+
+            </tr>
+            <tr>
+                <style>
+                    img[src=""],img:not([src]){
+                        opacity:0;
+                    }
+                </style>
+                <td colspan="0"> <div id="div1"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="btn1" value="提交">
+                </td>
+                <td>
+                    <input type="reset" id="btn2" value="重填">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</body>
+</html>

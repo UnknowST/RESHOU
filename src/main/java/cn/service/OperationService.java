@@ -116,4 +116,11 @@ public interface OperationService {
      * @return
      */
     int InsertBill(Bill bill);
+
+    /**
+     * 插入维修申报记录
+     * @param infor
+     * @return
+     */
+    int InsertInfor(Infor infor);
 }

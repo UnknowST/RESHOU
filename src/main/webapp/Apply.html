@@ -6,24 +6,58 @@
     <!--维修申报页面-->
     <script src="Js/jquery-3.3.1.js"></script>
     <script>
-        window.onload=function(){
+
+
+
+        $(function () {
+
+
+            $("#a1").click(function () {
+
+                $("#image").click();
+
+            })
+
+                $("#image").change(function () {
+                    var path=$("#image").val();
+                    var path1=path.split('\/')
+                    for(var i=0;i<path1.length;i++)
+                        alert(path1[i])
+                    alert(path1[0])
+                    $("#div1").html('<img src="'+path1[1]+'">');    //待解决
+                })
+
+
         $("#btn1").click(function () {
-            console.log(document.getElementById("image").files[0]);
-            var form={"place":$("#place").val(),"equip":$("#equip").val(),"detail":$("#detail").val(),"imagepath":document.getElementById("image").files[0]};
+
+
+            var form = document.getElementById("form1");
+            var formData = new FormData(form);
+            console.log(formData);
+            //var form={"place":$("#place").val(),"equip":$("#equip").val(),"detail":$("#detail").val(),"imagepath":document.getElementById("image").files[0]};
+            alert($("#image").val())
             $.ajax({
                 url:"operation/Apply",
                 type:"post",
                 dataType:"json",
                 async:false,
-                data:form,
+                data:formData,
                 processData:false,//对data参数进行序列化处理
                 contentType:false,//内容编码类型
                 cache:false,//不使用缓存
                 success:function (data) {
-                    alert("success")
+                    if(data.flag==0){
+                        alert(data.errorMsg);
+
+                    }
+                    else {
+                        alert("申报成功!");
+                        window.history.go(0)    //刷新页面
+                    }
                 }
             })
-        })}
+        })
+        })
     </script>
 </head>
 <body>
@@ -58,14 +92,23 @@
                 <label for="image">图片:</label>
             </td>
 
-            <td> <input type="file" name="image" id="image" >
+            <td> <a href="javascript:void(0)" id="a1">选择图片</a>
+                <input type="file" name="image" id="image" style="display: none"  >
                 <span>仅限于png,jpg,jpeg图片上传</span>
             </td>
 
         </tr>
         <tr>
+            <style>
+                img[src=""],img:not([src]){
+                    opacity:0;
+                }
+            </style>
+           <td colspan="0"> <div id="div1"></div></td>
+        </tr>
+        <tr>
             <td>
-              <input type="button" id="btn1" value="提交">
+              <input type="submit" id="btn1" value="提交">
             </td>
             <td>
                 <input type="reset" id="btn2" value="重填">

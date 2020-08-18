@@ -80,5 +80,10 @@ public class OperationServiceimpl implements OperationService {
         return opdao.InsertBill(bill);
     }
 
+    @Override
+    public int InsertInfor(Infor infor) {
+        return opdao.InsertInfor(infor);
+    }
+
 
 }

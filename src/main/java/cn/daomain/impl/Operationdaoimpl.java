@@ -153,4 +153,11 @@ public class Operationdaoimpl implements Operationdao {
      int n=template.update("insert into bill(num,cost,place,useing,createtime,workerid) values(?,?,?,?,?,?)",bill.getNum(),bill.getCost(),bill.getPlace(),bill.getUseing(),bill.getCreatetime(),bill.getWorkerid());
     return n;
     }
+
+    @Override
+    public int InsertInfor(Infor infor) {
+
+        return template.update("insert into infor(userid,place,equip,detail,imagepath) values(?,?,?,?,?)",infor.getUserid(),infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath());
+    }
+
 }

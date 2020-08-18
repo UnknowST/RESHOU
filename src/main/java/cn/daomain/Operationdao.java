@@ -25,4 +25,6 @@ public interface Operationdao {
     int modifwps(String workerid,String password,String password1);
     int Billnum();
     int InsertBill(Bill bill);
+    int InsertInfor(Infor infor);
+
 }
