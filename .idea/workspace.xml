@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="Commit Message">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/worker_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/worker_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/modif_worker.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +227,7 @@
       <workItem from="1597371581365" duration="9412000" />
       <workItem from="1597416840413" duration="7123000" />
       <workItem from="1597557831667" duration="24039000" />
-      <workItem from="1597654965294" duration="27265000" />
+      <workItem from="1597654965294" duration="27728000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Message">
       <created>1597719920789</created>
@@ -257,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597722100659</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit Message">
+      <created>1597727963772</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597727963773</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
