@@ -8,7 +8,7 @@ public class Bill {
      * 账单实体类
      * 对应信息为 序号，账单号，花费，地点，使用者，时间
      */
-    String snum,num,cost,place,useing;
+    String snum,num,cost,place,useing,workerid;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     Date createtime;
@@ -24,14 +24,16 @@ public class Bill {
      * @param place
      * @param useing
      * @param createtime
+     * @param workerid
      */
-    public Bill(String snum, String num, String cost, String place, String useing, Date createtime) {
+    public Bill(String snum, String num, String cost, String place, String useing, Date createtime,String workerid) {
         this.snum = snum;
         this.num = num;
         this.cost = cost;
         this.place = place;
         this.useing = useing;
         this.createtime = createtime;
+        this.workerid=workerid;
     }
     /**
      * 不带时间的有参构造函数
@@ -40,14 +42,24 @@ public class Bill {
      * @param cost
      * @param place
      * @param useing
+     * @param workerid
 
      */
-    public Bill(String snum, String num, String cost, String place, String useing) {
+    public Bill(String snum, String num, String cost, String place, String useing,String workerid) {
         this.snum = snum;
         this.num = num;
         this.cost = cost;
         this.place = place;
         this.useing = useing;
+        this.workerid=workerid;
+    }
+
+    public String getWorkerid() {
+        return workerid;
+    }
+
+    public void setWorkerid(String workerid) {
+        this.workerid = workerid;
     }
 
     public String getSnum() {

@@ -142,4 +142,15 @@ public class Operationdaoimpl implements Operationdao {
     public int modifwps(String workerid, String password, String password1) {
         return template.update("update worker set password=? where id=? and password=?" ,password1,workerid,password);
     }
+
+    @Override
+    public int Billnum() {
+        return template.queryForInt("SELECT MAX(num) FROM bill  ");
+    }
+
+    @Override
+    public int InsertBill(Bill bill) {
+     int n=template.update("insert into bill(num,cost,place,useing,createtime,workerid) values(?,?,?,?,?,?)",bill.getNum(),bill.getCost(),bill.getPlace(),bill.getUseing(),bill.getCreatetime(),bill.getWorkerid());
+    return n;
+    }
 }

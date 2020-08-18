@@ -70,5 +70,15 @@ public class OperationServiceimpl implements OperationService {
         return opdao.modifwps(workerid,password,password1);
     }
 
+    @Override
+    public int BIllnum() {
+        return opdao.Billnum();
+    }
+
+    @Override
+    public int InsertBill(Bill bill) {
+        return opdao.InsertBill(bill);
+    }
+
 
 }

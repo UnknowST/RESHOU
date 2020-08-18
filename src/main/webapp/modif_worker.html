@@ -186,13 +186,14 @@
                 if(checkpass()&&checkpassword1()&&checkpassword2()&&checkcode1()){
                 $.ajax({
                     url:"operation/Modifwps",
-                    data:{"password":$("#password").val(),"password1":$("#password1").val(),"check":$("#chenk1").val()},
+                    data:{"password":$("#password").val(),"password1":$("#password1").val(),"check":$("#check1").val()},
                     dataType:"json",
+                    type:'post',
                     async:false,
                     success:function (data) {
                         if(data.flag==0){
                             alert(data.errorMsg);
-                            var img=document.getElementById("code");
+                            var img=document.getElementById("code1");
                             changeCheckCode1(img);
                         }
                         else {
@@ -232,7 +233,7 @@
                         <p> <a href="modif_worker.html?num=2" >修改密码</a> </p>
                     </div>
                 </th>
-                <th><a href="">填写报销单</a></th>
+                <th><a href="Reimbursement.html">填写报销单</a></th>
                 <th><a href="LinkAdmin.html">联系管理员</a></th>
             </table>
 

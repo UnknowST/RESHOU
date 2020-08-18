@@ -1,5 +1,6 @@
 package cn.web.servlet;
 
+import cn.dao.Bill;
 import cn.dao.Infor;
 import cn.dao.ResultInfo;
 import cn.dao.User;
@@ -475,6 +476,7 @@ public class Operationservlet extends BaseServlet{
         String password1=request.getParameter("password1");
         //获取验证码并校验
         String check = request.getParameter("check");   //获取验证码
+        System.out.println(check);
         //获取用户id;
         Userinfor infor=new Userinfor();
         //从sesion中获取验证码
@@ -490,20 +492,77 @@ public class Operationservlet extends BaseServlet{
         }else {
 
             if(ops.modifwps(infor.findid(request, response), password, password1)==1)
-             info.setFlag(1);
+            {info.setFlag(1);}
 
             else {
                      info.setFlag(0);
                     info.setErrorMsg("密码修改失败，可能是原密码错误");
+                }
+
+
+
     }
-            //json格式返回数据
-            response.setContentType("application/x-json;charset=utf-8");
-            response.getWriter().write(gson.toJson(info));
 
+        //json格式返回数据
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+    }
 
-    }}
+    /**
+     * 获取当前账单号
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void Billnum(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        Map<String ,Integer> map=new HashMap();
+        int num=ops.BIllnum();
+        map.put("num",num+1);
+        writeValue(map,response);
 
+    }
 
+    /**
+     * 插入报销单记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void InsertBill(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        //获取数据
+        Map<String, String[]> map = request.getParameterMap();
+        Bill bill=new Bill();
+        try {
+            BeanUtils.populate(bill, map);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        //获取用户id
+        Userinfor in=new Userinfor();
+        bill.setWorkerid(in.findid(request,response));
+        int n=ops.InsertBill(bill);
+        if(n==1)
+        {info.setFlag(1);}
+
+        else {
+            info.setFlag(0);
+            info.setErrorMsg("提交失败!");
+        }
+        //json格式返回数据
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+
+    }
 
 
 }
