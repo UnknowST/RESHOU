@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply</title>
+    <!--维修申报页面-->
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        window.onload=function(){
+        $("#btn1").click(function () {
+            console.log(document.getElementById("image").files[0]);
+            var form={"place":$("#place").val(),"equip":$("#equip").val(),"detail":$("#detail").val(),"imagepath":document.getElementById("image").files[0]};
+            $.ajax({
+                url:"operation/Apply",
+                type:"post",
+                dataType:"json",
+                async:false,
+                data:form,
+                processData:false,//对data参数进行序列化处理
+                contentType:false,//内容编码类型
+                cache:false,//不使用缓存
+                success:function (data) {
+                    alert("success")
+                }
+            })
+        })}
+    </script>
+</head>
+<body>
+<form  id="form1" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                <label for="place">地点:</label>
+            </td>
+            <td>
+                <input type="text" id="place" name="place" placeholder="维修地点">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="equip">设备:</label>
+            </td>
+            <td>
+                <input type="text" id="equip" name="equip" placeholder="维修设备">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="detail">详细信息:</label>
+            </td>
+            <td>
+                <input type="text" id="detail" name="detail" placeholder="详细信息" style="width: 160px;height: 80px">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="image">图片:</label>
+            </td>
+
+            <td> <input type="file" name="image" id="image" >
+                <span>仅限于png,jpg,jpeg图片上传</span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+              <input type="button" id="btn1" value="提交">
+            </td>
+            <td>
+                <input type="reset" id="btn2" value="重填">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

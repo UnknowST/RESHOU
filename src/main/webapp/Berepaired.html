@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>berepaired</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+    <script>
+        $(function () {
+            $.ajax({
+                url:"operation/Lookinfor",
+                type:"get",
+                dataType:"json",
+                async:false,
+                success:function (list) {
+
+                    var kai = '<table border="1" cellspacing="0">' +
+                        '<th>申报人学/工号</th>' +
+                        '<th>地点</th>' +
+                        '<th>维修设备</th>' +
+                        '<th>详细信息</th>' +
+                        '<th>图片说明</th>' +
+                        '<th>申报时间</th>' +
+                        '<th>操作</th>'
+                    var jie = '</table>'
+                    var li = " "
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i].state != '已维修') {
+                            li += '<tr><td>' + list[i].userid + '</td><td>' + list[i].place + '</td><td>' + list[i].equip + '</td><td>'
+                                + list[i].detail + '</td><td><img width="80px" height="50px" src="'+ list[i].imagepath + '"></td><td>' + list[i].createdate + '</td><td>' +
+                                '<select id="stu"><option value="0">待维修</option>' +
+                                '<option value="1">正在维修</option>' +
+                                '<option value="2">已维修</option></select> <a href=' + '"javascript:void(0)"' + 'id=' + i + '>回复</a></td></tr>'
+                        }
+                    }
+                    $("#div1").html(kai + li + jie)
+                    var obj = document.getElementById("div1").getElementsByTagName("a")
+
+                    for (var j = obj.length - 1; j >= 0; j--) {
+
+                        obj[j].onclick = function () {
+                            num = list[this.id].cid;
+
+                            var statu=$("#stu option:selected").text();   //有问题
+                            alert(statu)
+                                $.ajax({
+                                url:"operation/Reinfor",
+                                type:"post",
+                                data:{"num":num,"statu":statu,"workerid":list[this.id].workerid,"userid":list[this.id].userid},
+                                dataType:"json",
+                                async: false,
+                                success:function (data) {
+                                    if(data.flag==0) alert(data.errorMsg);
+                                    else {
+                                        alert("回复成功!");
+                                        window.history.go(0)    //刷新页面
+                                    }
+
+                                }
+
+
+                            })
+                        }
+
+                    }
+                }
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+<!--弹窗div-->
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modif</title>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+    <script src="Js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<p><a href="javascript:void(0)"  onclick="modif()">修改基本信息</a></p>
+<p><a href="javascript:void(0)"  onclick="modipas()">修改密码</a></p>
+<p></p>
+<script>
+
+    function  checkusername(){
+        var username=document.getElementById("username").value;
+        if(username==null||username==""){
+            $("#checkusername").html("请输入用户名")
+            return false;
+        }else{
+            $("#checkusername").html("<img width='35' height='25' src='images/timg.jpg'/>")
+            return true;
+        }
+    }
+    function checkphone(){
+        var phone=document.getElementById("phone").value;
+        var re=/^1[3456789]\d{9}$/
+        var flag=re.test(phone)
+        var s_tel=document.getElementById("checktel")
+        if(flag){
+            //提示绿色对勾
+            s_tel.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+        }else{
+
+            s_tel.innerHTML = "手机号格式错误";
+        }
+        return flag;
+    }
+    function checkmail() {
+        var reg_mail=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        var mail=$("#mail").val();
+        if(mail==null||mail==""){
+            $("#checkemail").html("请输入邮箱地址")
+            return false;
+        }else{
+            var flag1=reg_mail.test(mail)
+            if(flag1){
+                $("#checkemail").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+
+            }else {
+                $("#checkemail").html("格式错误")
+                return false;}
+        }
+
+    }
+    function checkcode(){
+        var code=$("#check").val();
+        if(code==null||code==""){
+            $("#check_code").html("请输入验证码")
+            return false;
+        }else {
+            return true;
+        }
+    }
+    function checkcode1(){
+        var code=$("#check1").val();
+        if(code==null||code==""){
+            $("#check_code1").html("请输入验证码")
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    function checkpassword1() {
+        var reg_password =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,16}$/;
+
+        var password1=$("#password1").val();
+
+        var flag = reg_password.test(password1);
+        if(password1==null||password1=="") {$("#checkpassword1").html("请输入密码"); return false}
+        if(flag){
+            $("#checkpassword1").html("<img width='35' height='25' src='images/timg.jpg'/>")
+            return true;}
+        else {
+            $("#checkpassword1").html("*密码格式有误,请输入至少6-16个字符，" + "<br>" + "至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符;");
+            return false;
+        }
+
+    }
+    function checkpassword2(){
+        var password2=$("#password2").val();
+        var password1=$("#password1").val();
+        if(password2==null||password2=="")
+        {
+            $("#checkpassword2").html("请再次输入密码！"); return false;
+        }else
+        {
+            if(password2==password1){
+                $("#checkpassword2").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true}
+            else {
+                $("#checkpassword2").html("两次输入的密码不相同！")
+            }
+
+        }
+    }
+    function checkpass(){
+        var password=$("#password").val();
+
+        if(password==null||password=="")
+        {
+            $("#checkpassword").html("请输入原密码"); return false;
+        }else
+        {
+
+                $("#checkpassword").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true
+
+
+        }
+    }
+
+    $(function () {
+
+        $.ajax({
+            url:"findUser/infor",
+            type:"get",
+            dataType:"json",
+            async: false,
+            success:function (data) {
+                $("#username").val(data.username)
+                $("#mail").val(data.mail)
+                $("#phone").val(data.phone)
+                pass=data.password;
+            }
+
+        })
+        $("#but2").click(function () {
+            if(checkmail()&&checkusername()&&checkphone()&&checkcode()){
+                $.ajax({
+                    url:"operation/modif_user",
+                    type:"post",
+                    dataType:"json",
+                    data:{"username":$("#username").val(),"mail":$("#mail").val(),"phone":$("#phone").val(),"check":$("#check").val()},
+                    async:false,
+                    success:function (data) {
+                        if(data.flag==0){
+                            alert(data.errorMsg);
+                            var img=document.getElementById("code");
+                            changeCheckCode(img);
+                        }
+                        else {
+                            alert("修改成功!");
+                            window.history.go(0)    //刷新页面
+                        }
+
+                    }
+                })
+            }
+            else return false;
+        })
+        $("#but1").click(function () {
+            document.getElementById('all_light').style.display = 'none';
+
+            document.getElementById('contes').style.display = 'none';
+        })
+
+        $("#but4").click(function () {
+            if(checkpass()&&checkpassword1()&&checkpassword2()&&checkcode1()){
+                $.ajax({
+                    url:"operation/modifpass",
+                    dataType:"json",
+                    type:"post",
+                    data:{"password":$("#password").val(),"password1":$("#password1").val(),"check":$("#check1").val()},
+                    success:function (data) {
+                        if(data.flag==0){
+                            alert(data.errorMsg);
+                            var img=document.getElementById("code1");
+                            changeCheckCode1(img);
+                        }
+                        else {
+                            alert("密码修改成功!");
+                            window.history.go(0)    //刷新页面
+                        }
+
+                    }
+
+                })
+
+
+            }
+            else return false;
+
+        })
+        $("#but3").click(function () {
+            document.getElementById('all_light1').style.display = 'none';
+
+            document.getElementById('contes1').style.display = 'none';
+        })
+
+        $("#username").blur(checkusername);
+        $("#phone").blur(checkphone)
+        $("#mail").blur(checkmail)
+        $("#check").blur(checkcode)
+
+        $("#password1").blur(checkpassword1);
+        $("#password2").blur(checkpassword2);
+        $("#password").blur(checkpass);
+    })
+</script>
+<!--弹窗div-->
+<div2 id="contes" style="">
+
+    <div3 style="width:500px;height:40px;">
+
+        修改基本信息
+
+        <hr>
+        <form id="modifuser" style=" margin-left: 100px;">
+            <table>
+                <tr>
+                    <td ><label for="username">用户名</label></td>
+                    <td > <input type="username" name="username" id="username"  placeholder="请输入用户名">
+                        <span id="checkusername"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td ><label for="mail">邮箱</label></td>
+                    <td >  <input type="email" name="mail" id="mail" placeholder="请输入邮箱" >
+                        <span id="checkemail"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td ><label for="phone">手机号</label></td>
+                    <td > <input type="test" name="phone" id="phone" placeholder="请输入手机号" >
+                        <span id="checktel"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text"><label for="check">验证码</label></td>
+                    <td class="f_td"><input name="check" id="check" type="text" placeholder="请输入验证码" autocomplete="off">
+                        <span><img src="checkCode" alt="" id="code" onclick="changeCheckCode(this)"></span>
+                        <span id="check_code"></span>
+                        <script type="text/javascript">
+                            //图片点击事件
+                            function changeCheckCode(img) {
+                                img.src="checkCode?"+new Date().getTime();
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="but1" value="取消"></td>
+                    <td><input type="button" id="but2" value="修改"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div3>
+
+</div2>
+
+<div4 id="all_light">
+
+</div4>
+
+
+<!--弹窗div-->
+<div2 id="contes1" style="">
+
+    <div3 style="width:500px;height:40px;">
+
+        修改密码
+
+        <hr>
+        <form id="modifpossword" style=" margin-left: 100px;">
+            <table>
+                <tr>
+                    <td ><label for="password">原密码</label></td>
+                    <td > <input type="password" name="password" id="password" placeholder="请输入原密码" >
+                        <span id="checkpassword"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td ><label for="password1">新密码</label></td>
+                    <td > <input type="password" name="password1" id="password1" placeholder="请输入新密码" >
+                        <span id="checkpassword1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td ><label for="password2"1>请再次输入</label></td>
+                    <td > <input type="password" name="password2" id="password2" placeholder="请再次输入新密码" >
+                        <span id="checkpassword2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text"><label for="check">验证码</label></td>
+                    <td class="f_td"><input name="check" id="check1" type="text" placeholder="请输入验证码" autocomplete="off">
+                        <span><img src="checkCode" alt="" id="code1" onclick="changeCheckCode1(this)"></span>
+                        <span id="check_code1"></span>
+                        <script type="text/javascript">
+                            //图片点击事件
+                            function changeCheckCode1(img) {
+                                img.src="checkCode?"+new Date().getTime();
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="but3" value="取消"></td>
+                    <td><input type="button" id="but4" value="修改"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div3>
+
+</div2>
+
+<div4 id="all_light1">
+
+</div4>
+<script>
+    function modif() {
+
+        document.getElementById('all_light').style.display = 'block';
+
+        document.getElementById('contes').style.display = 'block';
+
+    }
+    function modipas() {
+
+        document.getElementById('all_light1').style.display = 'block';
+
+        document.getElementById('contes1').style.display = 'block';
+
+    }
+</script>
+</body>
+</html>

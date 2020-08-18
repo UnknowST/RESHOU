@@ -1,0 +1,28 @@
+项目名称
+校园维修通
+1.进度记录
+   实现了登陆和注册界面
+2.待解决的问题
+   点击登陆按钮提交信息后，servlet的get和post方法都不能运行
+   登陆和注册界面的表单校验还没有正在完成
+3.项目预估效果
+  想实现一个左边的导航栏的网站
+  利用spring框架
+
+
+  var dept=$("#collage option:selected").text();  //获取select的文本值
+//获取url中的参数
+  function getnum(qs) {
+            var s=location.href;
+            s=s.replace("?","?&").split("&");
+            var re="";
+            for (i=1;i<s.length;i++){
+                if(s[i].indexOf(qs+"=")==0){
+                    re=s[i].replace(qs+"=","");
+                }
+            }
+            return re;
+        }
+
+         re= getnum('num');
+         console.log(re)

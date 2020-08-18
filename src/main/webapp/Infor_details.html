@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>indor_details</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        function getnum(qs) {
+            var s=location.href;
+            s=s.replace("?","?&").split("&");
+            var re="";
+            for (i=1;i<s.length;i++){
+                if(s[i].indexOf(qs+"=")==0){
+                    re=s[i].replace(qs+"=","");
+                }
+            }
+            return re;
+        }
+        window.onload=function () {
+           re= getnum('num');
+            console.log(re)
+            $.ajax({
+                url:'operation/infor_details?re='+re+'',
+                type:"get",
+                dataType:"json",
+                data:re,
+                async:false,
+                success:function (data) {
+                    console.log(data)
+                    var kai='<table border="1" cellspacing="0">'
+                    var jie='</table>'
+                    var li='' ;
+
+                    if(data.Replay!=null){
+
+                        if(data.Infor.evaluate==null||data.Infor.evaluate=="0"&&data.Infor.state=="已维修"){
+
+                       li='<tr><td>地点:</td><td>'+data.Infor.place+'</td></tr>' +
+                           '<tr><td>设备:</td><td>'+data.Infor.equip+'</td></tr>' +
+                           '<tr><td>详细信息:</td><td>'+ data.Infor.detail+'</td></tr>' +
+                           '<tr><td>图片:</td><td><img src='+data.Infor.imagepath+'></td></tr>' +
+                           '<tr><td>上报时间:</td><td>'+ data.Infor.createdate+'</td></tr>' +
+                           '<tr><td>维修工人工号:</td><td>'+ data.Infor.workerid+'</td></tr>' +
+                           '<tr><td>维修状态:</td><td>'+ data.Infor.state+'</td></tr>' +
+                          /* '<tr><td>维修工人工号:</td><td>'+ data.Replay.workerid+'</td></tr>' +*/
+                           '<tr><td>回复信息:</td><td>'+ data.Replay.detail+'</td></tr>' +
+                           '<tr><td>回复时间:</td><td>'+ data.Replay.createdate+'</td></tr>' +
+                           '<tr><td>待评分:</td><td><select id="fen">' +
+                           '<option value="1">1</option>' +
+                           '<option value="2">2</option>' +
+                           '<option value="3">3</option>' +
+                           '<option value="4">4</option>' +
+                           '<option value="5">5</option>' +
+                           '<option value="6">6</option>' +
+                           '<option value="7">7</option>' +
+                           '<option value="8">8</option>' +
+                           '<option value="9">9</option>' +
+                           '<option value="10">10</option>' +
+                           '</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="btn1" value="提交"></td></tr>'
+                           /* if(data.Infor.evaluate!=null||data.Infor.evaluate!="0"&&data.Infor.state=="已维修")*/
+                        } else{
+
+                            li='<tr><td>地点:</td><td>'+data.Infor.place+'</td></tr>' +
+                                '<tr><td>设备:</td><td>'+data.Infor.equip+'</td></tr>' +
+                                '<tr><td>详细信息:</td><td>'+ data.Infor.detail+'</td></tr>' +
+                                '<tr><td>图片:</td><td><img src='+data.Infor.imagepath+'></td></tr>' +
+                                '<tr><td>上报时间:</td><td>'+ data.Infor.createdate+'</td></tr>' +
+                                '<tr><td>维修工人工号:</td><td>'+ data.Infor.workerid+'</td></tr>' +
+                                '<tr><td>维修状态:</td><td>'+ data.Infor.state+'</td></tr>' +
+
+                                '<tr><td>回复信息:</td><td>'+ data.Replay.detail+'</td></tr>' +
+                                '<tr><td>回复时间:</td><td>'+ data.Replay.createdate+'</td></tr>' +
+                                '<tr><td>评分:</td><td>' +data.Infor.evaluate+ '</td></tr>'
+                        }
+
+                    }if(data.Replay===null){
+
+                        li='<tr><td>地点:</td><td>'+data.Infor.place+'</td></tr>' +
+                            '<tr><td>设备:</td><td>'+data.Infor.equip+'</td></tr>' +
+                            '<tr><td>详细信息:</td><td>'+ data.Infor.detail+'</td></tr>' +
+                            '<tr><td>图片:</td><td><img src='+data.Infor.imagepath+'></td></tr>' +
+                            '<tr><td>上报时间:</td><td>'+ data.Infor.createdate+'</td></tr>' +
+                            '<tr><td>维修状态:</td><td>'+ data.Infor.state+'</td></tr>'
+
+
+                    }
+                    $("#div1").html(kai+li+jie)
+
+                    $("#btn1").click(function () {
+                        var fenshu=$("#fen option:selected").val();
+                        $.ajax({
+                            url:"operation/Fenshu",
+                            type:"post",
+                            async:false,
+                            data:{"num":data.Infor.cid,"fenshu":fenshu},
+                            dataType:"json",
+                            success:function (data) {
+                                    if(data.flag==0) alert(data.errorMsg);
+                                    else {
+                                        alert("评分成功!");
+                                    window.history.go(0)    //刷新页面
+                                }
+                            }
+                        })
+
+                    })
+                }
+            })
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

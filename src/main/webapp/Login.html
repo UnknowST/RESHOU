@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        div{
+            float: top;
+            width:500px;
+            height:400px;
+            padding:5px 60px;
+            margin:50px;
+            margin: auto;
+            color: red;
+
+            border:3px solid navajowhite;
+        }
+        span.title{
+            font-family: myFirstFont;
+
+            display:block;
+            width:85px;
+            height:30px;
+            position:relative;
+            top:-20px;
+            text-align: center;
+            background: white;
+        }
+        .f_td{
+            color: red;
+        }
+        .text{
+            font-size: 20px;
+            color: #030204;
+
+        }
+
+        #btn_sub{
+            text-align: center;
+            align-items: center;
+            width: 150px;
+            height: 40px;
+            background-color: #FFD026;
+            border: 1px solid #FFD026 ;
+        }
+        .table{
+            padding-top: 50px;
+            padding-left: 50px;
+            width: 400px;
+            height: 300px;
+        }
+        #id,#password{
+            width: 251px;
+            height: 32px;
+            border: 1px solid #A6A6A6 ;
+            /*设置边框圆角*/
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+    </style>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        function checkid(){
+            var id=$("#id").val()
+
+            if(id==null||id==""){
+                //边框变为红色
+                //$("#id").css("border","1px solid red");
+                $("#c_id").html("*");
+                return false;
+            }
+            else {
+
+                return true;}
+        }
+        function checkpassword(){
+            var password=document.getElementById("password").value;
+            if(password==null||password==""){
+                //$("#password").css("border","1px solid red");
+                $("#c_pass").html("*");
+                return false;
+            }
+            else  return true;
+        }
+        function checkshenfen(){
+            //var shenfen=$('#shenfen option:selected').text();
+
+            var shenfen=document.getElementById("shenfen").value;
+            if(shenfen==0){
+                $("#c_shenfen").html("*");
+                return false;
+            }
+            else return true;
+        }
+        $(function () {
+
+            $("#btn").click(function () {
+              var  form={"id":$("#id").val(),"password":$("#password").val(),"shenfen":$("#shenfen").val(),"check":$("#check").val()}
+               if(checkid()&& checkpassword()&& checkshenfen()) {
+                    $.ajax(
+                        {
+                            url: "loginServlet",
+                            type: "post",
+                            data: form,
+                            dataType: "json",
+                            async: false,
+                            success: function (data) {
+                                if (data.flag == "1")
+                                {
+                                    if (data.data == "1")
+                                        window.location.href = "./User_index.html";
+                                    if (data.data == "2")
+                                        window.location.href = "./worker_index.html";
+                                    if (data.data == "3")
+                                        window.location.href = "Admin_index.html";
+                                } else {
+                                   // $("#msg").html(data.errorMsg)
+                                    alert(data.errorMsg)
+                                    var img=document.getElementById("code");
+                                    changeCheckCode(img);
+                                }
+                            }
+                        }
+                    )
+                }
+               return false;
+            });
+            $("#id").blur(checkid);
+            $("#password").blur(checkpassword);
+            $("#shenfen").blur(checkshenfen);
+
+        })
+
+    </script>
+</head>
+<body style="padding-top: 150px" >
+
+<div>
+
+    <span class="title">登录界面</span>
+    <span>
+
+    <form method="post"  id="form"  >
+        <table class="table">
+
+            <tr>
+                <td class="text"><label for="id">账号</label></td>
+                <td class="f_td"><input type="text" id="id" name="id" placeholder="请输入账号">
+                <span id="c_id"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="text"><label for="password">密码</label></td>
+                <td class="f_td"><input type="password" id="password" name="password" placeholder="请输入密码">
+                    <span id="c_pass"></span>
+                </td>
+            </tr>
+                 <tr>
+            <td><label for="code"><h2>验证码:</label></td>
+            <td><input name="check" id="check" type="text" placeholder="请输入验证码" autocomplete="off"></td></h2>
+
+            <td align="center" colspan="2"><span><img src="checkCode" alt="" id="code" onclick="changeCheckCode(this)"></span></td>
+            <script type="text/javascript">
+                //图片点击事件
+                function changeCheckCode(img) {
+                    img.src="checkCode?"+new Date().getTime();
+                }
+            </script>
+                 </tr>
+            <tr>
+                <td>你的身份是:</td>
+                <td>
+                    <select id="shenfen" name="shenfen">
+                        <option value="0">请选择身份</option>
+                        <option value="1">普通用户</option>
+                        <option value="2">工人</option>
+                        <option value="3">管理员</option>
+                    </select>
+                     <span id="c_shenfen"></span>
+                </td>
+
+            </tr>
+            <tr>
+                <td ><input type="button" value="登录" id="btn" ></td>
+                <td><input type="button" value="注册" id="btn1" ></td>
+                <script>
+                    $("#btn1").click(function () {
+                        window.location.href="Register.html"
+                    })
+                </script>
+             </tr>
+
+        </table>
+    </form>
+
+    </span>
+</div>
+
+</body>
+</html>

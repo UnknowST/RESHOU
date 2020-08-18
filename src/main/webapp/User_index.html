@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+    <link href="css/body.css" type="text/css">
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"findUser/infor",
+                dataType:"json",
+                type:"get",
+                async:"false",
+                success:function (data) {
+                    $("#userid").html(data.username+"、欢迎登陆!")
+
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div id='box'>
+    <div id='logo'>
+      <!--  <span style="font-size:60px;margin-left:300px;">logo区域</span>-->
+        <span style="margin-left: 2px;" id="userid"></span>
+        <span style="margin-left: 30px">上海海洋大学维修申报系统</span>
+        <span style="margin-left: 100px;"><a href="/exitServlet">退出登陆</a></span>
+
+    </div>
+    <div id='nav'>
+        <ul type='none' style="font-size:25px;margin-left:2px;margin-top:100px;">
+            <li><a href="Apply.html">维修申报</a></li>
+            <li><a href="Seeinfor.html">查看记录</a></li>
+            <li><a href="modif_user.html">修改信息</a></li>
+            <li><a href="LinkAdmin.html">联系管理员</a></li>
+        </ul>
+    </div>
+    <div id='main'>
+        <p style='font-size:60px;margin-left:200px;margin-top:200px;'>主体区域</p>
+    </div>
+    <div id='footer'>
+        <span style='font-size:20px;margin-left:400px;'>页脚区域</span>
+    </div>
+</div>
+
+</body>
+
+</html>

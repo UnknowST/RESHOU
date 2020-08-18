@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dorepaired</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "operation/Lookinfor",
+                type: "get",
+                dataType: "json",
+                async: false,
+                success: function (list) {
+
+                    var kai = '<table border="1" cellspacing="0">' +
+                        '<th>申报人学/工号</th>' +
+                        '<th>地点</th>' +
+                        '<th>维修设备</th>' +
+                        '<th>详细信息</th>' +
+                        '<th>图片说明</th>' +
+                        '<th>申报时间</th>' +
+                        '<th>维修状态</th>' +
+                        '<th>评分</th>';
+                    var jie = '</table>'
+                    var li = " "
+                    var l2 = " "
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i].state == "已维修") {
+                            if (list[i].evaluate != "0") {
+                                li += '<tr><td>' + list[i].userid + '</td><td>' + list[i].place + '</td><td>' + list[i].equip + '</td><td>'
+                                    + list[i].detail + '</td><td><img width="80px" height="50px" src="' + list[i].imagepath + '"></td><td>' + list[i].createdate + '</td>' +
+                                    '<td>' + list[i].state + '</td><td>' + list[i].evaluate + '</td></tr>'
+                            } else {
+                                l2 += '<tr><td>' + list[i].userid + '</td><td>' + list[i].place + '</td><td>' + list[i].equip + '</td><td>'
+                                    + list[i].detail + '</td><td><img width="80px" height="50px" src="' + list[i].imagepath + '"></td><td>' + list[i].createdate + '</td>' +
+                                    '<td>' + list[i].state + '</td><td>待评分</td></tr>'
+                            }
+                        }
+                    }
+                    $("#div1").html(kai + li+l2 + jie)
+                }
+
+                })
+        })
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
