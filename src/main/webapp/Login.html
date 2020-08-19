@@ -93,7 +93,7 @@
             }
             else return true;
         }
-        //解析地址
+ /*       //解析地址
         function getnum(qs) {
             var s=location.href;
             s=s.replace("?","?&").split("&");
@@ -104,11 +104,11 @@
                 }
             }
             return re;
-        }
+        }*/
         $(function () {
-        /*    //获取过滤器拦截的消息
+            //获取过滤器拦截的消息
             $.ajax({
-                url:"/loginfilter/DoFilter",
+                url:"loginfilter",
                 type:"get",
                 dataType: "json",
                 async: true,
@@ -119,14 +119,14 @@
                     }
 
                 }
-            })*/
-            var msg=getnum('msg')
-            msg.e
-            if(msg!=null||msg!=" "){
-                alert(msg)
+            })
+
+
+       /*     if(msg!=null||msg!=" "){
+                alert(encodeURIComponent(msg))
                 $("#sp1").html(msg)
 
-            }
+            }*/
 
 
             $("#btn").click(function () {

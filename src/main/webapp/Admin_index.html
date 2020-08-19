@@ -3,8 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
+    <link href="css/body.css" type="text/css">
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"findUser/infor",
+                dataType:"json",
+                type:"get",
+                async:"false",
+                success:function (data) {
+                    $("#userid").html(data.userid+"、欢迎登陆!")
+
+                }
+            })
+            $("#a1").click(function () {
+                var d1=document.getElementById("div1");
+                if($("#div1").css("display")=="none")
+                    d1.style.display="block";
+
+                else d1.style.display="none";
+
+
+
+            })
+            $("#a2").click(function () {
+                var d2=document.getElementById("div2");
+                if($("#div2").css("display")=="none")
+                    d2.style.display="block";
+
+                else d2.style.display="none";
+
+
+
+            })
+            $("#a3").click(function () {
+                var d3=document.getElementById("div3");
+                if($("#div3").css("display")=="none")
+                    d3.style.display="block";
+
+                else d3.style.display="none";
+
+
+
+            })
+            $("#a4").click(function () {
+                var d4=document.getElementById("div4");
+                if($("#div4").css("display")=="none")
+                    d4.style.display="block";
+
+                else d4.style.display="none";
+
+
+
+            })
+
+
+
+        })
+
+    </script>
 </head>
 <body>
+<div id='box'>
+    <div id='logo'>
+        <!--  <span style="font-size:60px;margin-left:300px;">logo区域</span>-->
+        <span style="margin-left: 2px;" id="userid"></span>
+        <span style="margin-left: 30px">上海海洋大学维修申报系统</span>
+        <span style="margin-left: 100px;"><a href="/exitServlet">退出登陆</a></span>
+
+    </div>
+    <div id='nav'>
+
+        <ul type='none' style="font-size:25px;margin-left:2px;margin-top:15px;">
+       <table>
+           <th><a href="javascript:void(0)" id="a1">用户管理</a></th>
+           <th> <a href="javascript:void(0)" id="a2">维修记录管理</a></th>
+           <th> <a href="javascript:void(0)" id="a3">报销单管理</a></th>
+           <th> <a href="javascript:void(0)" id="a4">工人管理</a></th>
+           <tr>
+               <td> <div id="div1" style="display: none">
+                   <p><a href="Insert_user.html">增加用户</a></p>
+                   <p><a href="Look_user.html">查看用户信息</a></p>
+                   <p><a>查找用户</a></p>
+                   <p><a>修改用户信息</a></p>
+               </div></td>
+               <td>   <div id="div2" style="display: none">
+                   <p><a>查看维修记录</a></p>
+                   <p><a>查找维修记录</a></p>
+               </div></td>
+               <td>   <div id="div3" style="display: none">
+                   <p><a>查看报销单</a></p>
+                   <p><a>查找报销单</a></p>
+               </div></td>
+               <td> <div id="div4" style="display: none">
+                   <p><a>增加工人账号</a></p>
+                   <p><a>查找工人账号</a></p>
+                   <p><a>查找工人账号</a></p>
+               </div></td>
+           </tr>
+       </table>
+
+    </div>
+    <div id='main'>
+        <p style='font-size:60px;margin-left:200px;margin-top:200px;'>主体区域</p>
+    </div>
+    <div id='footer'>
+        <span style='font-size:20px;margin-left:400px;'>页脚区域</span>
+    </div>
+</div>
 
 </body>
 </html>

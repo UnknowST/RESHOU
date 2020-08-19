@@ -162,7 +162,7 @@ public class Operationdaoimpl implements Operationdao {
     @Override
     public int UpdateInfor(Infor infor) {
         DateFormat df3 = new SimpleDateFormat("yyy:MM:dd HH:mm:ss");
-        return template.update("insert into infor(place,equip,detail,imagepath,createdate) values(?,?,?,?,?) where cid=?",
+        return template.update("update infor set place=?,equip=?,detail=?,imagepath=?,createdate=?  where cid=?",
             infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath(),df3.format( new Date()),infor.getCid()
                 );
     }

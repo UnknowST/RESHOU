@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/loginServlet")
@@ -310,12 +311,16 @@ public class loginServlet extends HttpServlet {
                 //2.封装管理员对象
                 String id=req.getParameter("id");
                 String password=req.getParameter("password");
+                Map<String,String> map1=new HashMap<>();
 
                 if (id.equals("admin")==true&&password.equals("12345")==true) {
                     //账号密码正确
                     info.num=i;
                     info.setData(i);
                     info.setFlag(1);
+                    map1.put("userid",id);
+                    map1.put("password",password);
+                    req.getSession().setAttribute("user", map1);//对象放进缓存
                 } else {
                     //用户名密码或错误
                     info.setFlag(0);

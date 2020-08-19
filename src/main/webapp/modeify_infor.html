@@ -39,7 +39,7 @@
                 url:'operation/infor_details?re='+re+'',
                 type:"get",
                 dataType:"json",
-                data:re,
+                //data:re,
                 async:false,
                 success:function (data) {
 
@@ -48,7 +48,8 @@
                     $("#detail").val(data.Infor.detail)
                     if(data.Infor.imagepath!=null||data.Infor.imagepath!="")
                     $("#td1").html('<img src="'+data.Infor.imagepath+'"alt="图片不小心走丢了.....">')
-                    else $("#td1").html("没有上传图片..")
+                    if(data.Infor.imagepath===null)
+                        $("#td1").html("没有上传图片..")
                 }
             })
 
@@ -56,11 +57,13 @@
             $("#btn1").click(function () {
                 var form = document.getElementById("form1");
                 console.log(form);
+
                 var formData = new FormData(form);
-                console.log(formData);
-                alert($("#image").val())
+                formData.append("image",$("#td1").html().val())
+                console.log($("#td1").html().val());
+
                 $.ajax({
-                    url:"",
+                    url:"operation/UpdateApply?num="+re,
                     type:"post",
                     dataType:"json",
                     async:false,
@@ -70,12 +73,12 @@
                     cache:false,//不使用缓存
                     success:function (data) {
                         if(data.flag==0){
-                          //  alert(data.errorMsg);
+                          alert(data.errorMsg);
 
                         }
                         else {
-                           // alert("修改成功!");
-                           // window.history.go(0)    //刷新页面
+                            alert("修改成功!");
+                           //window.history.go(0)    //刷新页面
                         }
                     }
                 })
@@ -90,7 +93,7 @@
 <body>
 
 
-    <form  id="form1" enctype="multipart/form-data">
+    <form  id="form1" enctype="multipart/form-data" method="post">
         <table border="0" cellspacing="0">
 
             <tr>
