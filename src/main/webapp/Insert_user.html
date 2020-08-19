@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insert_user</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        function  checkid()
+
+        {
+            var id = $("#id").val();
+            if (id==null||id=="") {
+
+                $("#checkid").html("请输入账号")
+                return false;
+            } else{
+                $("#checkid").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+            }
+        }
+        function checkmail() {
+            var reg_mail=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+            var mail=$("#mail").val();
+            if(mail==null||mail==""){
+                $("#checkemail").html("请输入邮箱地址")
+                return false;
+            }else{
+                var flag1=reg_mail.test(mail)
+                if(flag1){
+                    $("#checkemail").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                    return true;
+
+                }else {
+                    $("#checkemail").html("格式错误")
+                    return false;}
+            }
+
+        }
+        function checkpassword1() {
+            var reg_password =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,16}$/;
+
+            var password1=$("#password1").val();
+
+            var flag = reg_password.test(password1);
+            if(password1==null||password1=="") {$("#checkpassword1").html("请输入密码"); return false}
+            if(flag){
+                $("#checkpassword1").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;}
+            else {
+                $("#checkpassword1").html("*密码格式有误,请输入至少6-16个字符，" + "<br>" + "至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符;");
+                return false;
+            }
+
+        }
+        function checkpassword2(){
+            var password2=$("#password2").val();
+            var password1=$("#password1").val();
+            if(password2==null||password2=="")
+            {
+                $("#checkpassword2").html("请再次输入密码！"); return false;
+            }else
+            {
+                if(password2==password1){
+                    $("#checkpassword2").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                    return true}
+                else {
+                    $("#checkpassword2").html("两次输入的密码不相同！")
+                }
+
+            }
+        }
+        function  checkcollage(){
+            var collage=document.getElementById("collage").value;
+            if(collage==0){
+                $("#checkcol").html("请选择学院信息")
+                return false;
+            }else{
+                $("#checkcol").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+            }
+        }
+        function  checkusername(){
+            var username=document.getElementById("username").value;
+            if(username==null||username==""){
+                $("#checkusername").html("请输入用户名")
+                return false;
+            }else{
+                $("#checkusername").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+            }
+        }
+        function checkname(){
+            var name=document.getElementById("name").value;
+            if(name==null||name==""){
+                $("#checkname").html("请输入姓名")
+                return false;
+            }else{
+                $("#checkname").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+            }
+        }
+        function checkphone(){
+            var phone=document.getElementById("phone").value;
+            var re=/^1[3456789]\d{9}$/
+            var flag=re.test(phone)
+            var s_tel=document.getElementById("checktel")
+            if(flag){
+                //提示绿色对勾
+                s_tel.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+            }else{
+
+                s_tel.innerHTML = "手机号格式错误";
+            }
+            return flag;
+        }
+        function checksex() {
+            var sex=document.getElementById("gender").value;
+
+            var s_sex=document.getElementById("checksex")
+            if(sex==0){
+                s_sex.innerHTML = "请选择性别";
+                return false;
+            }else{
+                //提示绿色对勾
+                s_sex.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+                return true;
+            }
+
+        }
+        function checkcode(){
+            var code=$("#check").val();
+            if(code==null||code==""){
+                $("#check_code").html("请输入验证码")
+                return false;
+            }else {
+                return true;
+            }
+        }
+
+
+        $(function () {
+            $("#btn1").click(function () {
+                if(checkid()&&checkpassword1()&&checkpassword2()&&checkcode()
+                    &&checkcollage()&&checkphone()&&checkname()&&checksex()&&checkusername()&&checkmail()
+                ){
+                    var form={"id":$("#id").val(),"password":$("#password1").val(),"username":$("#username").val(),"name":$("#name").val(),"collage":$("#collage option:selected").text(),"gender":$("#gender").val(),"phone":$("#phone").val(),"mail":$("#mail").val(),"check":$("#check").val()}
+                    $.ajax({
+                        url:"operation/Register",
+                        type: "post",
+                        data: form,
+                        dataType: "json",
+                        async: false,
+                        success:function (data) {
+                            if(data.flag=="1") {
+                                alert("注册成功");
+                                window.location.href="Login.jsp";
+                            }
+                            else{
+                                alert(data.errorMsg);
+                                var img=document.getElementById("code");
+                                changeCheckCode(img);
+                            }
+
+                        }
+                    })
+                }
+
+                else return false;
+            })
+
+            $("#id").blur(checkid);
+            $("#password1").blur(checkpassword1);
+            $("#password2").blur(checkpassword2);
+            $("#username").blur(checkusername);
+            $("#name").blur(checkname)
+            $("#phone").blur(checkphone)
+            $("#gender").blur(checksex)
+            $("#collage").blur(checkcollage)
+            $("#check").blur(checkcode)
+            $("#mail").blur(checkmail)
+        })
+
+    </script>
+</head>
+<body>
+<form  id="form" method="post"    >
+    <table>
+
+        <tr>
+
+
+            <td ><label for="id">账号</label></td>
+            <td > <input type="text" name="id" id="id" placeholder="请输入学号/工号" >
+                <span id="checkid"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td ><label for="collage">学院</label></td>
+            <td > <select name="collage" id="collage">
+                <option name="col" value ="0"></option>
+                <option name="col" value ="信息学院">信息学院</option>
+                <option name="col" value ="经管学院">经管学院</option>
+                <option name="col" value ="食品学院">食品学院</option>
+                <option name="col" value ="水产与生命学院">水产与生命学院</option>
+                <option name="col" value ="外国语学院">外国语学院</option>
+                <option name="col" value ="马克思主义学院">马克思主义学院</option>
+                <option name="col" value ="海洋科学学院">海洋科学学院</option>
+                <option name="col" value ="海洋生态与环境学院">海洋生态与环境学院</option>
+                <option name="col" value ="工程学院">工程学院</option>
+                <option name="col" value ="海洋文化与法律学院">海洋文化与法律学院</option>
+                <option name="col" value ="爱恩学院">爱恩学院</option>
+                <option name="col" value ="体育部">体育部</option>
+                <option name="col" value ="继续教育学院">继续教育学院</option>
+                <option name="col" value ="国际文化交流学院">国际文化交流学院</option>
+
+            </select>
+                <span id="checkcol">
+                    </span>
+            </td>
+
+        </tr>
+        <tr>
+            <td ><label for="username">用户名</label></td>
+            <td > <input type="username" name="username" id="username"  placeholder="请输入用户名">
+                <span id="checkusername"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label for="password1">密码</label></td>
+            <td > <input type="password" name="password1" id="password1" placeholder="请输入密码" >
+                <span id="checkpassword1"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label for="password2"1>请再次输入</label></td>
+            <td > <input type="password" name="password2" id="password2" placeholder="请再次输入密码" >
+                <span id="checkpassword2"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label for="mail">邮箱</label></td>
+            <td >  <input type="email" name="mail" id="mail" placeholder="请输入邮箱" >
+                <span id="checkemail"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label for="name">姓名</label></td>
+            <td > <input type="text" name="name" id="name" placeholder="请输入姓名" >
+                <span id="checkname"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label for="phone">手机号</label></td>
+            <td > <input type="test" name="phone" id="phone" placeholder="请输入手机号" >
+                <span id="checktel"></span>
+            </td>
+        </tr>
+        <tr>
+            <td ><label >性别</label></td>
+            <td ><select name="gender" id="gender">
+                <option name="col" value ="0"></option>
+                <option name="col" value ="M">男</option>
+                <option name="col" value ="W">女</option>
+            </select>
+                <span id="checksex"></span>
+        </tr>
+        <tr>
+            <td class="text"><label for="check">验证码</label></td>
+            <td class="f_td"><input name="check" id="check" type="text" placeholder="请输入验证码" autocomplete="off">
+                <span><img src="checkCode" alt="" id="code" onclick="changeCheckCode(this)"></span>
+                <span id="check_code"></span>
+                <script type="text/javascript">
+                    //图片点击事件
+                    function changeCheckCode(img) {
+                        img.src="checkCode?"+new Date().getTime();
+                    }
+                </script>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2" align="center" >
+                <input type="button" id="btn1" value="添加" ></input>
+            </td>
+            <td colspan="2" align="center" >
+                <input type="reset" id="btn2" value="重填"></input>
+            </td>
+
+        </tr>
+    </table>
+
+
+</form>
+</body>
+</html>

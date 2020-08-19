@@ -202,6 +202,119 @@ public class Operationservlet extends BaseServlet{
     public void UpdateApply( HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
 
+        Infor inf=new Infor();
+        List<String> plist=new ArrayList<>();
+        inf.setCid(request.getParameter("num"));
+        String paths;  //最终保存路径
+        request.setAttribute("path", "");
+        String filename = null;
+        // 设置上传图片的保存路径
+        String savePath = this.getServletContext().getRealPath("/image");
+        File file = new File(savePath);
+        // 判断上传文件的保存目录是否存在
+        if (!file.exists() && !file.isDirectory()) {
+            System.out.println(savePath + "目录不存在，需要创建");
+            // 创建目录
+            file.mkdir();
+        }
+        //1,
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        // 2、创建一个文件上传解析器
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        upload.setHeaderEncoding("UTF-8");
+        // 3、判断提交上来的数据是否是上传表单的数据
+        if (!ServletFileUpload.isMultipartContent(request)) {
+            // 按照传统方式获取数据  没用
+
+            return;
+        }
+        try {
+            List<FileItem> list = upload.parseRequest(request);
+           // System.out.println(list.toString());// 文件的路径 以及保存的路径
+            Iterator iterator = list.iterator();
+            while (iterator.hasNext()) {
+                FileItem item = (FileItem)iterator.next();
+                if (item.isFormField()) {                               // 判断数据流是不是文件
+                    String value=item.getString("utf-8");           //把不是文件的数据全部加入plist
+                    plist.add(value);
+                    continue;
+                }else{
+                    InputStream strem=item.getInputStream();
+                    filename = item.getName();
+                    filename = filename.substring(filename.lastIndexOf("\\") + 1);
+                    System.out.println("filename.isEmpty()"+filename.isEmpty());
+                    System.out.println("filename.length()"+filename.length());
+                    System.out.println("filename.equals"+" ".equals(filename));
+                    if(!filename.isEmpty()) {
+
+                        System.out.println("名称" + filename);
+                        if (filename.substring(filename.lastIndexOf(".") + 1).equals("png")//判断是不是图片
+                                || filename.substring(filename.lastIndexOf(".") + 1).equals("jpg")
+                                || filename.substring(filename.lastIndexOf(".") + 1).equals("jpeg")) {
+                            InputStream in = item.getInputStream();//获得上传的输入流
+                            FileOutputStream out = new FileOutputStream(savePath + "\\" + filename);// 指定web-inf目錄下的images文件
+                            request.setAttribute("path", "image" + "\\" + filename);
+                            paths = "image" + "\\" + filename;
+                            inf.setImagepath(paths);
+
+                            int len = 0;
+                            byte buffer[] = new byte[1024];
+                            while ((len = in.read(buffer)) > 0)// 每次读取
+                            {
+                                out.write(buffer, 0, len);
+                            }
+                            in.close();      //关闭流
+                            out.close();
+                            item.delete();
+
+                            inf.setPlace(plist.get(0));   //将其他数据读出
+                            inf.setEquip(plist.get(1));
+                            inf.setDetail(plist.get(2));
+                            //inf.setState("待维修");
+                            //获取用户id
+                            //Userinfor usf=new Userinfor();
+                            // inf.setUserid(usf.findid(request,response));
+                            if (ops.UpdateInfor(inf) == 1) {
+                                info.setFlag(1);
+                            } else {
+                                info.setFlag(0);
+                                info.setErrorMsg("修改失败,请重新修改！");
+                            }
+
+                            response.setContentType("application/x-json;charset=utf-8");
+                            response.getWriter().write(gson.toJson(info));
+
+                        } else {
+                            info.setFlag(0);
+                            info.setErrorMsg("上传图片格式不正确，请上传png,jpg,jepg\n格式的图片");
+                            response.setContentType("application/x-json;charset=utf-8");
+                            response.getWriter().write(gson.toJson(info));
+                        }
+                    }else {
+                        System.out.println(plist);
+
+                        inf.setPlace(plist.get(0));   //将其他数据读出
+                        inf.setEquip(plist.get(1));
+                        inf.setDetail(plist.get(2));
+
+                        if (ops.UpdateInfor(inf) == 1) {
+                            info.setFlag(1);
+                        } else {
+                            info.setFlag(0);
+                            info.setErrorMsg("修改失败,请重新修改！");
+                        }
+
+                        response.setContentType("application/x-json;charset=utf-8");
+                        response.getWriter().write(gson.toJson(info));
+
+                    }
+
+
+                }}
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+
     }
     /**
      * 用户查看维修记录

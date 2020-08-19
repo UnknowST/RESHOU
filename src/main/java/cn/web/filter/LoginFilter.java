@@ -13,15 +13,15 @@ import java.io.IOException;
 /**
  * 完成登陆验证的过滤器
  */
-@WebFilter("/*")
+@WebFilter("/loginfilter")
 
 public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
-        //ResultInfo inf=new ResultInfo();//记录转发消息
-        //Gson gson=new Gson();//阿里巴巴的实体类转化为json数据工具
+        ResultInfo inf=new ResultInfo();//记录转发消息
+        Gson gson=new Gson();//阿里巴巴的实体类转化为json数据工具
       //强制转换
         HttpServletRequest request=(HttpServletRequest)req;
         HttpServletResponse response=(HttpServletResponse)resp;
@@ -33,7 +33,7 @@ public class LoginFilter implements Filter {
         ){
             //包含放行
            filterChain.doFilter(req,resp);
-           //inf.setFlag(1);
+           inf.setFlag(1);
 
         }else{
             //不包含，需要验证用户是否登陆
@@ -41,19 +41,17 @@ public class LoginFilter implements Filter {
             if(user!=null){
                 //登陆了
                 filterChain.doFilter(req,resp);
-              //  inf.setFlag(1);
+              inf.setFlag(1);
             }else{
                 //没登陆跳转
                 //request.setAttribute("Login.html");
-               // request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
-               // inf.setFlag(0);
-                //inf.setErrorMsg("您还没登陆,请登录!");
-                //json话消息
-               // response.setContentType("application/x-json;charset=utf-8");
-                //response.getWriter().write(gson.toJson(inf));
-                response.setCharacterEncoding("UTF-8");
-                response.setHeader("Content-type","text/html;charset=UTF-8");
-               response.sendRedirect("Login.html?msg=您还没登录,请登录!");   //跳转 地址栏改变
+                //request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
+                inf.setFlag(0);
+                inf.setErrorMsg("您还没登陆,请登录!");
+//                json化消息
+                response.setContentType("application/x-json;charset=utf-8");
+                response.getWriter().write(gson.toJson(inf));
+               response.sendRedirect("Login.html");   //跳转 地址栏改变
             }
         }
     }

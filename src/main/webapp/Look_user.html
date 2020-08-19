@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //请求数据
+            $.ajax({
+                url:"adoperation/ReaderUser",
+                type:'get',
+                dataType:'json',
+                async:false,
+                success:function (list) {
+                    //渲染数据
+
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<table border="1" cellspacing="0">
+    <th>序号</th>
+    <th>账号</th>
+    <th>用户名</th>
+    <th>学院<select name="collage" id="collage">
+        <option name="col" value ="0"></option>
+        <option name="col" value ="信息学院">信息学院</option>
+        <option name="col" value ="经管学院">经管学院</option>
+        <option name="col" value ="食品学院">食品学院</option>
+        <option name="col" value ="水产与生命学院">水产与生命学院</option>
+        <option name="col" value ="外国语学院">外国语学院</option>
+        <option name="col" value ="马克思主义学院">马克思主义学院</option>
+        <option name="col" value ="海洋科学学院">海洋科学学院</option>
+        <option name="col" value ="海洋生态与环境学院">海洋生态与环境学院</option>
+        <option name="col" value ="工程学院">工程学院</option>
+        <option name="col" value ="海洋文化与法律学院">海洋文化与法律学院</option>
+        <option name="col" value ="爱恩学院">爱恩学院</option>
+        <option name="col" value ="体育部">体育部</option>
+        <option name="col" value ="继续教育学院">继续教育学院</option>
+        <option name="col" value ="国际文化交流学院">国际文化交流学院</option>
+
+    </select></th>
+    <th>姓名</th>
+    <th>操作</th>
+</table>
+</body>
+</html>
