@@ -6,6 +6,20 @@
     <script src="Js/jquery-3.3.1.js"></script>
     <script>
         $(function () {
+            $("#a1").click(function () {
+
+                $("#image").click();
+
+            })
+
+            $("#image").change(function () {
+                var path=$("#image").val();
+                //var path1=path.split('\/')
+               /* for(var i=0;i<path1.length;i++)
+                    alert(path1[i])*/
+                alert(path.slice(3));
+                $("#div1").html('<img src="'+path.slice(3)+'">');    //待解决
+            })
             //解析地址
             function getnum(qs) {
                 var s=location.href;
@@ -33,14 +47,39 @@
                     $("#equip").val(data.Infor.equip)
                     $("#detail").val(data.Infor.detail)
                     if(data.Infor.imagepath!=null||data.Infor.imagepath!="")
-                    $("#td1").html('"<img src="'+data.Infor.imagepath+'"alt="图片不小心走丢了.....">')
+                    $("#td1").html('<img src="'+data.Infor.imagepath+'"alt="图片不小心走丢了.....">')
                     else $("#td1").html("没有上传图片..")
-
-
-
-
-
                 }
+            })
+
+            //发送更新后的数据
+            $("#btn1").click(function () {
+                var form = document.getElementById("form1");
+                console.log(form);
+                var formData = new FormData(form);
+                console.log(formData);
+                alert($("#image").val())
+                $.ajax({
+                    url:"",
+                    type:"post",
+                    dataType:"json",
+                    async:false,
+                    data:formData,
+                    processData:false,//对data参数进行序列化处理
+                    contentType:false,//内容编码类型
+                    cache:false,//不使用缓存
+                    success:function (data) {
+                        if(data.flag==0){
+                          //  alert(data.errorMsg);
+
+                        }
+                        else {
+                           // alert("修改成功!");
+                           // window.history.go(0)    //刷新页面
+                        }
+                    }
+                })
+
             })
 
         })
@@ -52,7 +91,7 @@
 
 
     <form  id="form1" enctype="multipart/form-data">
-        <table>
+        <table border="0" cellspacing="0">
 
             <tr>
                 <td>
@@ -115,6 +154,7 @@
                 <td>
                     <input type="reset" id="btn2" value="重填">
                 </td>
+
             </tr>
         </table>
     </form>
