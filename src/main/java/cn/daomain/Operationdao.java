@@ -1,5 +1,6 @@
 package cn.daomain;
 
+import cn.dao.Bill;
 import cn.dao.Infor;
 import cn.dao.User;
 
@@ -22,4 +23,9 @@ public interface Operationdao {
     Map<String,String> Lookfen(String workerid);
     int modifworker(String workerid,String phone,String mail);
     int modifwps(String workerid,String password,String password1);
+    int Billnum();
+    int InsertBill(Bill bill);
+    int InsertInfor(Infor infor);
+    int UpdateInfor(Infor infor);
+
 }

@@ -93,7 +93,41 @@
             }
             else return true;
         }
+        //解析地址
+        function getnum(qs) {
+            var s=location.href;
+            s=s.replace("?","?&").split("&");
+            var re="";
+            for (i=1;i<s.length;i++){
+                if(s[i].indexOf(qs+"=")==0){
+                    re=s[i].replace(qs+"=","");
+                }
+            }
+            return re;
+        }
         $(function () {
+        /*    //获取过滤器拦截的消息
+            $.ajax({
+                url:"/loginfilter/DoFilter",
+                type:"get",
+                dataType: "json",
+                async: true,
+                success:function (data) {
+                    alert("1w")
+                    if(data.flag==0){
+                        $("#sp1").val(data.errorMsg)
+                    }
+
+                }
+            })*/
+            var msg=getnum('msg')
+            msg.e
+            if(msg!=null||msg!=" "){
+                alert(msg)
+                $("#sp1").html(msg)
+
+            }
+
 
             $("#btn").click(function () {
               var  form={"id":$("#id").val(),"password":$("#password").val(),"shenfen":$("#shenfen").val(),"check":$("#check").val()}
@@ -189,6 +223,7 @@
                         window.location.href="Register.html"
                     })
                 </script>
+                <span id="sp1"></span>
              </tr>
 
         </table>

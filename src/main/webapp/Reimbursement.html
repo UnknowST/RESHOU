@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement</title>
+    <!--报销-->
+    <link href="css/body.css" type="text/css">
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+
+        //表单校验
+        function checkplace(){
+            if($("#place").val()==""||$("#place").val()==null){
+                $("#c_p").html("*") ;
+                return false;
+            }else {
+                $("#c_p").html("") ;
+                return true;
+            }
+        }
+        function checkuseing(){
+            if($("#useing").val()==""||$("#useing").val()==null){
+                $("#c_u").html("*") ;
+                return false;
+            }else {
+                $("#c_u").html("") ;
+                return true;
+            }
+        }
+        function checkcost(){
+            if($("#cost").val()==""||$("#cost").val()==null){
+                $("#c_c").html("*") ;
+                return false;
+            }else {
+                $("#c_c").html("") ;
+                return true;
+            }
+
+        }
+        function checkdate(){
+            if($("#date").val()==""||$("#date").val()==null){
+                $("#c_d").html("*") ;
+                return false;
+            }else {
+                $("#c_d").html("") ;
+                return true;
+            }
+
+        }
+
+        $(function () {
+
+            $("#place").blur(checkplace)
+            $("#useing").blur(checkuseing)
+            $("#cost").blur(checkcost)
+            $("#date").blur(checkdate)
+var num;
+            $.ajax({
+                url:"operation/Billnum",
+                type:"get",
+                dataType:"json",
+                async:false,
+                success:function (data) {
+                    num=data.num;
+                    $("#num").html(data.num);
+                }
+            })
+     $("#but2").click(function () {
+
+            if(checkcost()&&checkdate()&&checkplace()&&checkuseing()){
+
+                $.ajax({
+
+                    url:'operation/InsertBill',
+                    type:"post",
+                    dataType: "json",
+                    data:{"num":num,"place":$("#place").val(),"useing":$("#useing").val(),"cost":$("#cost").val(),"createtime":$("#date").val()},
+                    success:function (data) {
+                        if(data.flag==0){
+                            alert(data.errorMsg);
+                        }
+                        else {
+                            alert("提交成功!");
+                            window.history.go(0)    //刷新页面
+                        }
+                    }
+                })
+            }
+            else return false;
+        })
+        })
+    </script>
+</head>
+<body>
+<div id='box'>
+    <div id='logo'>
+        <!--  <span style="font-size:60px;margin-left:300px;">logo区域</span>-->
+        <span style="margin-left: 2px;" id="userid"></span>
+        <span style="margin-left: 30px">上海海洋大学维修申报系统</span>
+        <span style="margin-left: 100px;"><a href="/exitServlet">退出登陆</a></span>
+
+    </div>
+    <div id='nav'>
+        <ul type='none' style="font-size:15px;margin-left:2px;margin-top:15px;">
+            <table>
+                <th><a href="Berepaired.html">待维修记录</a></th>
+                <th><a href="Dorepaired.html">已完成维修记录</a></th>
+                <th><a href="javascript:void(0)" id="look">查看历史评分</a></th>
+                <th><a id="a1" href="javascript:void(0)">修改个人信息</a>
+                    <div id="div1" style="display: none">
+                        <p><a href="modif_worker.html?num=1"  >修改基本信息</a></p>
+                        <p> <a href="modif_worker.html?num=2" >修改密码</a> </p>
+                    </div>
+                </th>
+                <th><a href="Reimbursement.html">填写报销单</a></th>
+                <th><a href="LinkAdmin.html">联系管理员</a></th>
+            </table>
+
+        </ul>
+    </div>
+
+    <div id='main'>
+<form>
+    <table align="center">
+        <tr>
+            <td><label>账单号:</label></td>
+            <td><span id="num" style="font-family: 'Bell MT';color: red"></span></td>
+        </tr>
+        <tr>
+            <td><label>地点:</label></td>
+            <td><input type="text" id="place" name="place" placeholder="花费地点">
+            <span id="c_p"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label>用途:</label></td>
+            <td><input type="text" id="useing" name="useing" placeholder="花费用途">
+            <span id="c_u"></span></td>
+        </tr>
+        <tr>
+            <td><label>金额:</label></td>
+            <td><input type="text" id="cost" name="cost" placeholder="金额">
+            <span id="c_c"></span></td>
+        </tr>
+        <tr>
+            <td><label>日期:</label></td>
+            <td><input type="date" id="date" name="date">
+            <span id="c_d"></span></td>
+        </tr>
+        <tr>
+            <td><input type="reset" id="but1"  value="重填"></td>
+            <td><input type="button" id="but2" value="提交"></td>
+        </tr>
+    </table>
+</form>
+
+
+
+
+    </div>
+    <div id='footer'>
+        <span style='font-size:20px;margin-left:400px;'>页脚区域</span>
+    </div>
+</div>
+</body>
+</html>

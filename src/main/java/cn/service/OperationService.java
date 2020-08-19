@@ -1,5 +1,6 @@
 package cn.service;
 
+import cn.dao.Bill;
 import cn.dao.Infor;
 import cn.dao.User;
 
@@ -102,4 +103,31 @@ public interface OperationService {
      * @return
      */
     int modifwps(String workerid,String password,String password1);
+
+    /**
+     * 查找当前账单号
+     * @return
+     */
+    int BIllnum();
+
+    /**
+     * 插入报销单
+     * @param bill
+     * @return
+     */
+    int InsertBill(Bill bill);
+
+    /**
+     * 插入维修申报记录
+     * @param infor
+     * @return
+     */
+    int InsertInfor(Infor infor);
+
+    /**
+     * 用户更新维修申请
+     * @param infor
+     * @return
+     */
+    int UpdateInfor(Infor infor);
 }

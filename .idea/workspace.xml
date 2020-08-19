@@ -3,17 +3,38 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="ALL" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="Commit Message">
+    <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="8-18日">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/web/filter/LoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/T.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/Operationdao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/OperationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/impl/OperationServiceimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/body.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/body.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modif_worker.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modif_worker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/worker_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/worker_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Seeinfor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Seeinfor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modeify_infor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modeify_infor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/项目进度记录" beforeDir="false" afterPath="$PROJECT_DIR$/src/项目进度记录" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +46,8 @@
       <list>
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,12 +73,15 @@
     <option name="vmOptions" value="-DarchetypeCatalog=internal -Dfile.encoding=UTF-8" />
   </component>
   <component name="ProjectId" id="1fZkAxg9p9YBbfoDY01wzWvpJj0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="module" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -235,7 +259,8 @@
       <workItem from="1597371581365" duration="9412000" />
       <workItem from="1597416840413" duration="7123000" />
       <workItem from="1597557831667" duration="24039000" />
-      <workItem from="1597654965294" duration="37580000" />
+      <workItem from="1597654965294" duration="49225000" />
+      <workItem from="1597753329297" duration="18262000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Message">
       <created>1597719920789</created>
@@ -272,15 +297,49 @@
       <option name="project" value="LOCAL" />
       <updated>1597728230541</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Commit Message">
+      <created>1597738255111</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597738255111</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Commit Message">
+      <created>1597746161499</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597746161507</updated>
+    </task>
+    <task id="LOCAL-00008" summary="8-18日">
+      <created>1597763500174</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1597763500175</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Commit Message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit Message" />
+    <MESSAGE value="8-18日" />
+    <option name="LAST_COMMIT_MESSAGE" value="8-18日" />
   </component>
   <component name="WindowStateProjectService">
     <state x="498" y="0" key="#Project_Structure" timestamp="1596433991556">
@@ -295,15 +354,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="914" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1596641869805" />
-    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1597735633089">
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1597816724203">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596612153801" />
-    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597735633089" />
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597816724203" />
     <state x="449" y="95" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1596768829472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="95" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1596768829472" />
+    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1597763346606">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1597763346606" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1597807401649">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1597807401649" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597677455245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -313,22 +380,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="310" width="406" height="262" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1597721251388" />
-    <state width="1338" height="121" key="GridCell.Tab.0.bottom" timestamp="1597737412096">
+    <state width="1493" height="167" key="GridCell.Tab.0.bottom" timestamp="1597813475810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1338" height="121" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597737412096" />
-    <state width="1338" height="121" key="GridCell.Tab.0.center" timestamp="1597737412095">
+    <state width="1493" height="167" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597813475810" />
+    <state width="1493" height="167" key="GridCell.Tab.0.center" timestamp="1597813475810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1338" height="121" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
-    <state width="1338" height="121" key="GridCell.Tab.0.left" timestamp="1597737412095">
+    <state width="1493" height="167" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597813475810" />
+    <state width="1493" height="167" key="GridCell.Tab.0.left" timestamp="1597813475810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1338" height="121" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
-    <state width="1338" height="121" key="GridCell.Tab.0.right" timestamp="1597737412095">
+    <state width="1493" height="167" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597813475810" />
+    <state width="1493" height="167" key="GridCell.Tab.0.right" timestamp="1597813475810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1338" height="121" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597737412095" />
+    <state width="1493" height="167" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597813475810" />
     <state width="1493" height="436" key="GridCell.Tab.1.bottom" timestamp="1597637461393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -349,18 +416,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="317" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1597639829415" />
-    <state x="127" y="0" width="1270" height="824" key="SettingsEditor" timestamp="1597719665640">
+    <state x="127" y="0" width="1270" height="824" key="SettingsEditor" timestamp="1597746019401">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="127" y="0" width="1270" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597719665640" />
-    <state x="388" y="178" key="Vcs.Push.Dialog.v2" timestamp="1597728248621">
+    <state x="127" y="0" width="1270" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597746019401" />
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2" timestamp="1597763444446">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="388" y="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597728248621" />
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597763444446" />
     <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597722244547">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1597722244547" />
+    <state x="533" y="88" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1597756128037">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="533" y="88" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1597756128037" />
     <state x="178" y="73" key="new project wizard" timestamp="1597645647874">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -370,10 +441,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596603276562" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597733780241">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597741243110">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597733780241" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597741243110" />
     <state x="470" y="95" key="spring file set editor" timestamp="1596767745665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -391,6 +462,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
           <line>254</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java</url>
+          <line>471</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/Test/jdbcTest.java</url>
@@ -440,8 +516,31 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Berepaired.html</url>
           <line>43</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
+          <line>23</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
+          <line>25</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
+          <line>26</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/webapp/Seeinfor.html</url>
+          <line>31</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

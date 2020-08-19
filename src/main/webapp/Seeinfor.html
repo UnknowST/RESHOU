@@ -12,7 +12,7 @@
                 dataType:"json",
                 async:false,
                 success:function (data) {
-                    console.log("data  "+data[0].id)
+
                     if(data.length==0) {
                         alert("暂时没有维修记录哦！");
                         self.location=document.referrer;    //回退上一页
@@ -29,15 +29,17 @@
                             li+='<tr><td>'+n+'</td><td>'+data[i].createdate+'</td><td>'+data[i].place+'</td><td>'+data[i].equip+'</td>' +
                                 '<td>          <a href='+"Infor_details.html?num="+data[i].cid+'>查看详情</a>' +
                                 '            <a href='+'"javascript:void(0)"'+'id='+i+'>删除记录</a>' +
-                                '            <a href='+"SeeInfor2?num="+data[i].cid+"&&no=3"+'>修改记录</a></td></tr>'
+                                '           </td></tr>'
                         }
                         $("#div1").html(kai+li+jie)
                     }
-                    var obj=document.getElementById("div1").getElementsByTagName("a")
+                  //var obj=document.getElementById("div1").getElementsByTagName("a:even")
+                    var obj=$("a:odd")
+                    console.log(obj)
                     for( var j=obj.length-1;j>=0;j--){
 
                         obj[j].onclick =function(){
-                          num=data[this.id].cid;
+                         num=data[this.id].cid;
                           $.ajax({
                               url:"operation/DeleteInfor",
                               type:"post",
@@ -55,6 +57,8 @@
 
 
                           })
+
+
                         }
                     }
                 }

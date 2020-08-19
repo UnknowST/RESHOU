@@ -5,6 +5,11 @@
 2.待解决的问题
    点击登陆按钮提交信息后，servlet的get和post方法都不能运行
    登陆和注册界面的表单校验还没有正在完成
+   /图片预览问题
+   //图片路径中带中文无法解析的问题
+   //用户查看详情那里有一个bug
+   //修改维修信息还没完成
+   //管理员功能还没完成
 3.项目预估效果
   想实现一个左边的导航栏的网站
   利用spring框架
@@ -26,3 +31,8 @@
 
          re= getnum('num');
          console.log(re)
+
+
+             // request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
+                response.sendRedirect("Login.html");   //跳转 地址栏改变
+         var obj=$("a:odd")   //获取所有 a的偶数

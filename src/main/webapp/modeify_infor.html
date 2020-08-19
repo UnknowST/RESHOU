@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modify_infor</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $("#a1").click(function () {
+
+                $("#image").click();
+
+            })
+
+            $("#image").change(function () {
+                var path=$("#image").val();
+                //var path1=path.split('\/')
+               /* for(var i=0;i<path1.length;i++)
+                    alert(path1[i])*/
+                alert(path.slice(3));
+                $("#div1").html('<img src="'+path.slice(3)+'">');    //待解决
+            })
+            //解析地址
+            function getnum(qs) {
+                var s=location.href;
+                s=s.replace("?","?&").split("&");
+                var re="";
+                for (i=1;i<s.length;i++){
+                    if(s[i].indexOf(qs+"=")==0){
+                        re=s[i].replace(qs+"=","");
+                    }
+                }
+                return re;
+            }
+            //获取编号
+            var re=getnum('num');
+           //获取原始数据据
+            $.ajax({
+                url:'operation/infor_details?re='+re+'',
+                type:"get",
+                dataType:"json",
+                data:re,
+                async:false,
+                success:function (data) {
+
+                    $("#place").val(data.Infor.place)
+                    $("#equip").val(data.Infor.equip)
+                    $("#detail").val(data.Infor.detail)
+                    if(data.Infor.imagepath!=null||data.Infor.imagepath!="")
+                    $("#td1").html('<img src="'+data.Infor.imagepath+'"alt="图片不小心走丢了.....">')
+                    else $("#td1").html("没有上传图片..")
+                }
+            })
+
+            //发送更新后的数据
+            $("#btn1").click(function () {
+                var form = document.getElementById("form1");
+                console.log(form);
+                var formData = new FormData(form);
+                console.log(formData);
+                alert($("#image").val())
+                $.ajax({
+                    url:"",
+                    type:"post",
+                    dataType:"json",
+                    async:false,
+                    data:formData,
+                    processData:false,//对data参数进行序列化处理
+                    contentType:false,//内容编码类型
+                    cache:false,//不使用缓存
+                    success:function (data) {
+                        if(data.flag==0){
+                          //  alert(data.errorMsg);
+
+                        }
+                        else {
+                           // alert("修改成功!");
+                           // window.history.go(0)    //刷新页面
+                        }
+                    }
+                })
+
+            })
+
+        })
+
+
+    </script>
+</head>
+<body>
+
+
+    <form  id="form1" enctype="multipart/form-data">
+        <table border="0" cellspacing="0">
+
+            <tr>
+                <td>
+                    <label for="place">地点:</label>
+
+                </td>
+                <td>
+                    <input type="text" id="place" name="place" placeholder="维修地点">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="equip">设备:</label>
+                </td>
+                <td>
+                    <input type="text" id="equip" name="equip" placeholder="维修设备">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="detail">详细信息:</label>
+                </td>
+                <td>
+                    <input type="text" id="detail" name="detail" placeholder="详细信息" style="width: 160px;height: 80px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="image">图片:</label>
+                </td>
+
+                <td id="td1">
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label for="image">重新上传图片:</label>
+                </td>
+
+                <td> <a href="javascript:void(0)" id="a1">选择图片</a>
+                    <input type="file" name="image" id="image" style="display: none"  >
+                    <span>仅限于png,jpg,jpeg图片上传</span>
+                </td>
+
+            </tr>
+            <tr>
+                <style>
+                    img[src=""],img:not([src]){
+                        opacity:0;
+                    }
+                </style>
+                <td colspan="0"> <div id="div1"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="btn1" value="提交">
+                </td>
+                <td>
+                    <input type="reset" id="btn2" value="重填">
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+
+</body>
+</html>

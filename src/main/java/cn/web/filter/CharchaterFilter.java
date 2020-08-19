@@ -28,7 +28,7 @@ public class CharchaterFilter implements Filter {
             request.setCharacterEncoding("UTF-8");
         }
         if(method.equalsIgnoreCase("get")){
-            request.setCharacterEncoding("GB2312");
+            request.setCharacterEncoding("UTF-8");
         }
         //处理响应乱码
         response.setContentType("text/html;charset=UTF-8");
