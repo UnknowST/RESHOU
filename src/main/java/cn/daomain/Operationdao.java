@@ -26,5 +26,6 @@ public interface Operationdao {
     int Billnum();
     int InsertBill(Bill bill);
     int InsertInfor(Infor infor);
+    int UpdateInfor(Infor infor);
 
 }

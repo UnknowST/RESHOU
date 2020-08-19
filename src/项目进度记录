@@ -31,3 +31,8 @@
 
          re= getnum('num');
          console.log(re)
+
+
+             // request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
+                response.sendRedirect("Login.html");   //跳转 地址栏改变
+         var obj=$("a:odd")   //获取所有 a的偶数

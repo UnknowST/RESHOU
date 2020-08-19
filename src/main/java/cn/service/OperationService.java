@@ -123,4 +123,11 @@ public interface OperationService {
      * @return
      */
     int InsertInfor(Infor infor);
+
+    /**
+     * 用户更新维修申请
+     * @param infor
+     * @return
+     */
+    int UpdateInfor(Infor infor);
 }

@@ -191,6 +191,19 @@ public class Operationservlet extends BaseServlet{
     }
 
     /**
+     * 更新维修表单
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void UpdateApply( HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+
+    }
+    /**
      * 用户查看维修记录
      * @param request
      * @param response

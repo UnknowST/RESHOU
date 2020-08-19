@@ -3,16 +3,15 @@ package cn.daomain.impl;
 import cn.dao.*;
 import cn.daomain.Operationdao;
 import cn.jdbcutils.JDBCUtils;
-import com.sun.javafx.collections.MappingChange;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sound.sampled.Line;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Operationdaoimpl implements Operationdao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
@@ -158,6 +157,14 @@ public class Operationdaoimpl implements Operationdao {
     public int InsertInfor(Infor infor) {
 
         return template.update("insert into infor(userid,place,equip,detail,imagepath) values(?,?,?,?,?)",infor.getUserid(),infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath());
+    }
+
+    @Override
+    public int UpdateInfor(Infor infor) {
+        DateFormat df3 = new SimpleDateFormat("yyy:MM:dd HH:mm:ss");
+        return template.update("insert into infor(place,equip,detail,imagepath,createdate) values(?,?,?,?,?) where cid=?",
+            infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath(),df3.format( new Date()),infor.getCid()
+                );
     }
 
 }

@@ -12,7 +12,7 @@
                 dataType:"json",
                 async:false,
                 success:function (data) {
-                    console.log("data  "+data[0].id)
+
                     if(data.length==0) {
                         alert("暂时没有维修记录哦！");
                         self.location=document.referrer;    //回退上一页
@@ -33,7 +33,9 @@
                         }
                         $("#div1").html(kai+li+jie)
                     }
-                    var obj=document.getElementById("div1").getElementsByTagName("a")
+                  //var obj=document.getElementById("div1").getElementsByTagName("a:even")
+                    var obj=$("a:odd")
+                    console.log(obj)
                     for( var j=obj.length-1;j>=0;j--){
 
                         obj[j].onclick =function(){
