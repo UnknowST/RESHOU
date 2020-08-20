@@ -59,8 +59,8 @@
                 console.log(form);
 
                 var formData = new FormData(form);
-                formData.append("image",$("#td1").html().val())
-                console.log($("#td1").html().val());
+                //formData.append("image",$("#td1").html().val())
+                //console.log($("#td1").html().val());
 
                 $.ajax({
                     url:"operation/UpdateApply?num="+re,
@@ -78,7 +78,7 @@
                         }
                         else {
                             alert("修改成功!");
-                           //window.history.go(0)    //刷新页面
+                           window.history.go(0)    //刷新页面
                         }
                     }
                 })

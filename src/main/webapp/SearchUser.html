@@ -4,8 +4,192 @@
     <meta charset="UTF-8">
     <title>serachUser</title>
     <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //加载数据
+            $.ajax({
+                url:"adoperation/ReaderUser",
+                type:'get',
+                dataType:'json',
+                async:false,
+                success:function (list) {
+                    //监听按钮
+                    $("#btn1").click(function () {
+                        var kai='<table border="1" cellspacing="0" id="b1"><th>序号</th>' +
+                            '<th>账号</th>' +
+                            '<th>学院</th>' +
+                            '<th>用户名</th>' +
+                            '<th>姓名</th>' +
+                            '<th>性别</th>' +
+                            '<th>手机号</th>' +
+                            '<th>邮箱</th>' +
+                            '<th>操作</th>'
+                        var jie='</table>'
+                        var li=" ",n=0 ,l2=" ",l3=" ",l4=" ";
+                        var num=$("#option option:selected").val();
+                        var text=$("#put").val();
+                        if(num!=0){
+                            if(num==1){
+                                //搜索条件为id
+                                for(var i=0;i<list.length;i++){
+                                    if(list[i].id==text){
+                                        n++;
+                                    li+='<tr id="'+i+'"><td>'+n+'</td><td>' +
+                                        list[i].id+'</td><td>' +
+                                        list[i].collage+'</td><td>' +
+                                        list[i].username+'</td><td>' +
+                                        list[i].name+'</td><td>' +
+                                        list[i].gender+'</td><td>' +
+                                        list[i].phone+'</td><td>' +
+                                        list[i].mail+'</td><td>' +
+                                           '<a href="javascript:void(0)" id="'+i+'"> 删除</a>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                        '<a href="Admodify_user.html?num='+list[i].snum+ '">修改</a></td></tr>'
+                                   
+                                    }
+                                }
+                                $("#d1").remove();
+                                $("#div1").html(kai+li+jie);
+
+                            }
+                            if(num==2){
+                                //搜索条件为phone
+                                n=0;
+                                for(var i=0;i<list.length;i++){
+                                    if(list[i].phone==text){
+                                        n++;
+                                        l2+='<tr id="'+i+'"><td>'+n+'</td><td>' +
+                                            list[i].id+'</td><td>' +
+                                            list[i].collage+'</td><td>' +
+                                            list[i].username+'</td><td>' +
+                                            list[i].name+'</td><td>' +
+                                            list[i].gender+'</td><td>' +
+                                            list[i].phone+'</td><td>' +
+                                            list[i].mail+'</td><td>' +
+                                            '<a href="javascript:void(0)" id="'+i+'"> 删除</a>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                            '<a href="Admodify_user.html?num='+list[i].snum+ '">修改</a></td></tr>'
+
+                                    }
+                                }
+                                $("#d1").remove();
+                                $("#div1").html(kai+l2+jie);
+
+
+                            }
+                            if(num==3){
+                                //搜索条件为username
+                                n=0;
+                                for(var i=0;i<list.length;i++){
+                                    if(list[i].username==text){
+                                        n++;
+                                        l3+='<tr id="'+i+'"><td>'+n+'</td><td>' +
+                                            list[i].id+'</td><td>' +
+                                            list[i].collage+'</td><td>' +
+                                            list[i].username+'</td><td>' +
+                                            list[i].name+'</td><td>' +
+                                            list[i].gender+'</td><td>' +
+                                            list[i].phone+'</td><td>' +
+                                            list[i].mail+'</td><td>' +
+                                            '<a href="javascript:void(0)" id="'+i+'"> 删除</a>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                            '<a href="Admodify_user.html?num='+list[i].snum+ '">修改</a></td></tr>'
+
+                                    }
+                                }
+                                $("#d1").remove();
+                                $("#div1").html(kai+l3+jie);
+                            }
+                            if(num==4){
+                                //搜索条件为name
+                                n=0;
+                                for(var i=0;i<list.length;i++){
+                                    if(list[i].name==text){
+                                        n++;
+                                        l4+='<tr id="'+i+'"><td>'+n+'</td><td>' +
+                                            list[i].id+'</td><td>' +
+                                            list[i].collage+'</td><td>' +
+                                            list[i].username+'</td><td>' +
+                                            list[i].name+'</td><td>' +
+                                            list[i].gender+'</td><td>' +
+                                            list[i].phone+'</td><td>' +
+                                            list[i].mail+'</td><td>' +
+                                            '<a href="javascript:void(0)" id="'+i+'"> 删除</a>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                            '<a href="Admodify_user.html?num='+list[i].snum+ '">修改</a></td></tr>'
+
+                                    }
+                                }
+                                $("#d1").remove();
+                                $("#div1").html(kai+l4+jie);
+
+                            }
+
+                            //操作监听
+                            //删除
+                            var obj = $("a:even");
+                            for (var j = obj.length - 1; j >= 0; j--) {
+
+                                obj[j].onclick = function () {
+                                    //var couns = $("#option option:selected").text();
+                                    var snum = list[this.id].snum;
+                                    var t1=this.id;
+                                   alert("tr [id='"+this.id+"']")
+                                    $.ajax({
+                                        url: "adoperation/DeleteUser",
+                                        type: "post",
+                                        data: {"snum":snum},
+                                        dataType: "json",
+                                        async: false,
+                                        success: function (data) {
+                                            if (data.flag == "1") {
+                                                alert("删除成功")
+
+                                                $("tr[id='"+t1+"']").empty()
+
+
+
+                                            } else {
+                                                alert(data.errorMsg)
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+
+
+
+
+                        }
+
+                    })
+
+                }
+            })
+            $("#option").change(function () {
+                var option=$("#option option:selected").text();
+                if(option!='条件')
+                $("#put").attr("placeholder","请输入需要查找的"+option);
+                if(option=='条件')
+                    $("#put").attr("placeholder","请选择搜索条件");
+            })
+
+
+        })
+    </script>
 </head>
 <body>
-
+<table>
+    <tr>
+       <td><select id="option">
+           <option value="0">条件</option>
+           <option value="1">账号</option>
+           <option value="2">手机号</option>
+           <option value="3">用户名</option>
+           <option value="4">姓名</option>
+       </select></td>
+        <td>
+            <input type="text" id="put"  placeholder="">
+        </td>
+        <td> <input type="button" id="btn1" value="搜索"></td>
+    </tr>
+</table>
+<div id="div1"></div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>insert_user</title>
+    <title>admodify_user</title>
     <script src="Js/jquery-3.3.1.js"></script>
     <script>
         function  checkid()
@@ -35,39 +35,6 @@
                     return false;}
             }
 
-        }
-        function checkpassword1() {
-            var reg_password =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,16}$/;
-
-            var password1=$("#password1").val();
-
-            var flag = reg_password.test(password1);
-            if(password1==null||password1=="") {$("#checkpassword1").html("请输入密码"); return false}
-            if(flag){
-                $("#checkpassword1").html("<img width='35' height='25' src='images/timg.jpg'/>")
-                return true;}
-            else {
-                $("#checkpassword1").html("*密码格式有误,请输入至少6-16个字符，" + "<br>" + "至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符;");
-                return false;
-            }
-
-        }
-        function checkpassword2(){
-            var password2=$("#password2").val();
-            var password1=$("#password1").val();
-            if(password2==null||password2=="")
-            {
-                $("#checkpassword2").html("请再次输入密码！"); return false;
-            }else
-            {
-                if(password2==password1){
-                    $("#checkpassword2").html("<img width='35' height='25' src='images/timg.jpg'/>")
-                    return true}
-                else {
-                    $("#checkpassword2").html("两次输入的密码不相同！")
-                }
-
-            }
         }
         function  checkcollage(){
             var collage=document.getElementById("collage").value;
@@ -129,57 +96,83 @@
         }
 
 
-
         $(function () {
-            $("#btn1").click(function () {
-                if(checkid()&&checkpassword1()&&checkpassword2()
-                    &&checkcollage()&&checkphone()&&checkname()&&checksex()&&checkusername()&&checkmail()
-                ){
-                    var form={"id":$("#id").val(),"password":$("#password1").val(),"username":$("#username").val(),"name":$("#name").val(),"collage":$("#collage option:selected").text(),"gender":$("#gender").val(),"phone":$("#phone").val(),"mail":$("#mail").val()}
-                    $.ajax({
-                        url:"adoperation/InsertUser",
-                        type: "post",
-                        data: form,
-                        dataType: "json",
-                        async: false,
-                        success:function (data) {
-                            if(data.flag=="1") {
-                                alert("添加成功");
-                                window.history.go(0)    //刷新页面
-                            }
-                            else{
-                                alert(data.errorMsg);
-
-                            }
-
-                        }
-                    })
+            //解析地址
+            function getnum(qs) {
+                var s=location.href;
+                s=s.replace("?","?&").split("&");
+                var re="";
+                for (i=1;i<s.length;i++){
+                    if(s[i].indexOf(qs+"=")==0){
+                        re=s[i].replace(qs+"=","");
+                    }
                 }
+                return re;
+            }
+            var num=getnum('num');
+            //请求数据
+            $.ajax({
+                url:'adoperation/ReaderNum?num='+num,
+                type:'get',
+                dataType:'json',
+                async:false,
+                success:function (data) {
+                    if(data.length==0){
+                        alert("数据读取失败！")
+                        self.location=document.referrer;    //回退上一页
+                    }
+                    else{
+                        //追加数据
+                        $("#id").val(data.id)
+                        $("#username").val(data.username)
+                        $("#name").val(data.name)
+                        $("#collage").find('option[value='+data.collage+']').attr("selected",true);
+                        $("#gender").find('option[value='+data.gender+']').attr("selected",true);
+                        $("#mail").val(data.mail)
+                        $("#phone").val(data.phone)
+                    }
 
-                else return false;
+                }
+            })
+            $("#btn1").click(function () {
+                    if(checkmail()&&checkphone()&&checkusername()&&checksex()&&checksex()&&checkcollage()&&checkid()){
+                        var form=$("#form").serialize()
+                        $.ajax({
+                            url:"adoperation/Adupuser?snum="+num,
+                            type: 'post',
+                            data:form,
+                            dataType:'json',
+                            success:function (data) {
+                                if(data.flag==1) {
+                                    alert("修改成功");
+                                    window.history.go(0)    //刷新页面
+                                }else {
+                                    alert("修改失败")
+                                }
+
+                            }
+                        })
+
+                    }
             })
 
+
             $("#id").blur(checkid);
-            $("#password1").blur(checkpassword1);
-            $("#password2").blur(checkpassword2);
             $("#username").blur(checkusername);
             $("#name").blur(checkname)
             $("#phone").blur(checkphone)
             $("#gender").blur(checksex)
             $("#collage").blur(checkcollage)
-
             $("#mail").blur(checkmail)
-        })
 
+
+        })
     </script>
 </head>
 <body>
 <form  id="form" method="post"    >
     <table>
-
         <tr>
-
-
             <td ><label for="id">账号</label></td>
             <td > <input type="text" name="id" id="id" placeholder="请输入学号/工号" >
                 <span id="checkid"></span>
@@ -217,18 +210,7 @@
                 <span id="checkusername"></span>
             </td>
         </tr>
-        <tr>
-            <td ><label for="password1">密码</label></td>
-            <td > <input type="password" name="password1" id="password1" placeholder="请输入密码" >
-                <span id="checkpassword1"></span>
-            </td>
-        </tr>
-        <tr>
-            <td ><label for="password2"1>请再次输入</label></td>
-            <td > <input type="password" name="password2" id="password2" placeholder="请再次输入密码" >
-                <span id="checkpassword2"></span>
-            </td>
-        </tr>
+
         <tr>
             <td ><label for="mail">邮箱</label></td>
             <td >  <input type="email" name="mail" id="mail" placeholder="请输入邮箱" >
@@ -259,10 +241,10 @@
 
         <tr>
             <td colspan="2" align="center" >
-                <input type="button" id="btn1" value="添加" ></input>
+                <input type="button" id="btn1" value="修改" ></input>
             </td>
             <td colspan="2" align="center" >
-                <input type="reset" id="btn2" value="重填"></input>
+                <input type="reset" id="btn2" value="重置"></input>
             </td>
 
         </tr>

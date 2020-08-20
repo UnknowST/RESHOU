@@ -17,4 +17,25 @@ public interface AdOperationService {
      * @return
      */
     int DeleteUser(String snum);
+
+    /**
+     * 插入用户信息
+     * @param user
+     * @return
+     */
+    int InsertUser(User user);
+
+    /**
+     * 根据表单好查找用户信息
+     * @param num
+     * @return
+     */
+    User ReaderNum(String num);
+
+    /**
+     * 管理员更新用户信息
+     * @param user
+     * @return
+     */
+    int Adupuser(User user);
 }
