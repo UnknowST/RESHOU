@@ -4,6 +4,7 @@ import cn.dao.ResultInfo;
 import cn.dao.User;
 import cn.service.AdOperationService;
 import cn.service.impl.AdOperationServiceimpl;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import java.util.List;
 public class AdOpServlet extends BaseServlet {
     AdOperationService ado=new  AdOperationServiceimpl(); //服务层
     ResultInfo info=new ResultInfo(); //信息记录实体类
+    Gson gson=new Gson(); //json
     /**
      * 读出用户信息记录
      * @param request
@@ -32,5 +34,18 @@ public class AdOpServlet extends BaseServlet {
         writeValue(list,response);  //json数据
 
     }
+    public void DeleteUser(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        if(ado.DeleteUser(request.getParameter("snum"))==1){
+            info.setFlag(1);
+        }else {
+            info.setFlag(0);
+            info.setErrorMsg("删除失败，请重新删除!");
+        }
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+
+    }
+
 
 }

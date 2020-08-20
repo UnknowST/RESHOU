@@ -10,4 +10,11 @@ public interface AdOperationService {
      * @return
      */
     List<User> ReaderUser();
+
+    /**
+     * 删除用户
+     * @param snum
+     * @return
+     */
+    int DeleteUser(String snum);
 }

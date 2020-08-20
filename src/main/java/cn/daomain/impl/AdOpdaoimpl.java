@@ -14,4 +14,9 @@ public class AdOpdaoimpl implements AdOpdao {
     public List<User> ReaderUser() {
         return template.query("select * from user",new BeanPropertyRowMapper<User>(User.class));
     }
+
+    @Override
+    public int DeleteUser(String snum) {
+        return template.update("delete from user where snum=? ",snum);
+    }
 }

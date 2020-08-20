@@ -13,4 +13,9 @@ public class AdOperationServiceimpl implements AdOperationService {
     public List<User> ReaderUser() {
         return addao.ReaderUser();
     }
+
+    @Override
+    public int DeleteUser(String snum) {
+        return addao.DeleteUser(snum);
+    }
 }

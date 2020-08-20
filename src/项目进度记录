@@ -36,3 +36,8 @@
              // request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
                 response.sendRedirect("Login.html");   //跳转 地址栏改变
          var obj=$("a:odd")   //获取所有 a的偶数
+//获取选择框的文本
+ var collage=$("#collage option:selected").text();
+  $("#d1 ").append(li)  //表格追加数据
+
+  //管理员查看用户信息那里还不能实现随着选择的学院不同而变化
