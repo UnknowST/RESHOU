@@ -14,8 +14,10 @@
   想实现一个左边的导航栏的网站
   利用spring框架
 
-
+  window.history.go(0)    //刷新页面
+  self.location=document.referrer;    //回退上一页
   var dept=$("#collage option:selected").text();  //获取select的文本值
+       $("#gender").find('option[value='+data.gender+']').attr("selected",true);  //修改select 选中的值
 //获取url中的参数
   function getnum(qs) {
             var s=location.href;
@@ -31,7 +33,8 @@
 
          re= getnum('num');
          console.log(re)
-
+ $("#put").removeAttr("placeholder")   //删除属性
+   $("tr[id='"+t1+"']").empty()   //删除指定id 的tr
 
              // request.getRequestDispatcher("/Login.html").forward(request,resp);  //重定向 地址栏不变
                 response.sendRedirect("Login.html");   //跳转 地址栏改变
@@ -41,3 +44,5 @@
   $("#d1 ").append(li)  //表格追加数据
 
   //管理员查看用户信息那里还不能实现随着选择的学院不同而变化
+
+  Java String 类中 isEmpty() 方法判断字符串的长度是否为空，如果字符串长度为 0，则返回 true，否则返回 false。

@@ -155,16 +155,29 @@ public class Operationdaoimpl implements Operationdao {
 
     @Override
     public int InsertInfor(Infor infor) {
-
-        return template.update("insert into infor(userid,place,equip,detail,imagepath) values(?,?,?,?,?)",infor.getUserid(),infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath());
+        String sql1="insert into infor(userid,place,equip,detail,imagepath) values(?,?,?,?,?)";
+        String sql2="insert into infor(userid,place,equip,detail) values(?,?,?,?)";
+        String path=infor.getImagepath();
+        if("".equals(path)||"null".equals(path)){
+            return template.update(sql2,infor.getUserid(),infor.getPlace(),infor.getEquip(),infor.getDetail());
+        }else
+        return template.update(sql1,infor.getUserid(),infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath());
     }
 
     @Override
     public int UpdateInfor(Infor infor) {
+
         DateFormat df3 = new SimpleDateFormat("yyy:MM:dd HH:mm:ss");
-        return template.update("update infor set place=?,equip=?,detail=?,imagepath=?,createdate=?  where cid=?",
-            infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath(),df3.format( new Date()),infor.getCid()
-                );
+        String path=infor.getImagepath();
+        if("".equals(path)||"null".equals(path)){
+            return template.update("update infor set place=?,equip=?,detail=?,createdate=?  where cid=?",
+                    infor.getPlace(),infor.getEquip(),infor.getDetail(),df3.format( new Date()),infor.getCid()
+            );
+        }else
+            return template.update("update infor set place=?,equip=?,detail=?,imagepath=?,createdate=?  where cid=?",
+                    infor.getPlace(),infor.getEquip(),infor.getDetail(),infor.getImagepath(),df3.format( new Date()),infor.getCid()
+            );
+
     }
 
 }

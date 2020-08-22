@@ -123,6 +123,7 @@ public class Operationservlet extends BaseServlet{
         // 3、判断提交上来的数据是否是上传表单的数据
         if (!ServletFileUpload.isMultipartContent(request)) {
             // 按照传统方式获取数据  没用
+
             return;
         }
         try {
@@ -139,37 +140,62 @@ public class Operationservlet extends BaseServlet{
                     InputStream strem=item.getInputStream();
                     filename = item.getName();
                     filename = filename.substring(filename.lastIndexOf("\\") + 1);
-                    System.out.print("名称"+filename);
-                    if (filename.substring(filename.lastIndexOf(".") + 1).equals("png")//判断是不是图片
-                            || filename.substring(filename.lastIndexOf(".") + 1).equals("jpg")
-                            || filename.substring(filename.lastIndexOf(".") + 1).equals("jpeg")) {
-                        InputStream in = item.getInputStream();//获得上传的输入流
-                        FileOutputStream out = new FileOutputStream(savePath + "\\" + filename);// 指定web-inf目錄下的images文件
-                        request.setAttribute("path",  "image"+"\\" + filename);
-                        paths="image"+"\\" + filename;
-                        inf.setImagepath(paths);
+                    if(!filename.isEmpty()) {
+                        System.out.print("名称" + filename);
+                        if (filename.substring(filename.lastIndexOf(".") + 1).equals("png")//判断是不是图片
+                                || filename.substring(filename.lastIndexOf(".") + 1).equals("jpg")
+                                || filename.substring(filename.lastIndexOf(".") + 1).equals("jpeg")) {
+                            InputStream in = item.getInputStream();//获得上传的输入流
+                            FileOutputStream out = new FileOutputStream(savePath + "\\" + filename);// 指定web-inf目錄下的images文件
+                            request.setAttribute("path", "image" + "\\" + filename);
+                            paths = "image" + "\\" + filename;
+                            inf.setImagepath(paths);
 
-                        int len = 0;
-                        byte buffer[] = new byte[1024];
-                        while ((len = in.read(buffer)) > 0)// 每次读取
-                        {
-                            out.write(buffer, 0, len);
+                            int len = 0;
+                            byte buffer[] = new byte[1024];
+                            while ((len = in.read(buffer)) > 0)// 每次读取
+                            {
+                                out.write(buffer, 0, len);
+                            }
+                            in.close();      //关闭流
+                            out.close();
+                            item.delete();
+
+
+                            inf.setPlace(plist.get(0));   //将其他数据读出
+                            inf.setEquip(plist.get(1));
+                            inf.setDetail(plist.get(2));
+                            //inf.setState("待维修");
+                            //获取用户id
+                            Userinfor usf = new Userinfor();
+                            inf.setUserid(usf.findid(request, response));
+                            if (ops.InsertInfor(inf) == 1) {
+                                info.setFlag(1);
+                            } else {
+                                info.setFlag(0);
+                                info.setErrorMsg("申报失败,请重新申报！");
+                            }
+
+                            response.setContentType("application/x-json;charset=utf-8");
+                            response.getWriter().write(gson.toJson(info));
+
+                        } else {
+                            info.setFlag(0);
+                            info.setErrorMsg("上传图片格式不正确，请上传png,jpg,jepg\n格式的图片");
+                            response.setContentType("application/x-json;charset=utf-8");
+                            response.getWriter().write(gson.toJson(info));
                         }
-                        in.close();      //关闭流
-                        out.close();
-                        item.delete();
-
-
+                    }
+                    else {
                         inf.setPlace(plist.get(0));   //将其他数据读出
                         inf.setEquip(plist.get(1));
                         inf.setDetail(plist.get(2));
-                        //inf.setState("待维修");
                         //获取用户id
-                        Userinfor usf=new Userinfor();
-                        inf.setUserid(usf.findid(request,response));
-                        if(ops.InsertInfor(inf)==1){
+                        Userinfor usf = new Userinfor();
+                        inf.setUserid(usf.findid(request, response));
+                        if (ops.InsertInfor(inf) == 1) {
                             info.setFlag(1);
-                        }else{
+                        } else {
                             info.setFlag(0);
                             info.setErrorMsg("申报失败,请重新申报！");
                         }
@@ -177,11 +203,6 @@ public class Operationservlet extends BaseServlet{
                         response.setContentType("application/x-json;charset=utf-8");
                         response.getWriter().write(gson.toJson(info));
 
-                    } else {
-                           info.setFlag(0);
-                           info.setErrorMsg("上传图片格式不正确，请上传png,jpg,jepg\n格式的图片");
-                        response.setContentType("application/x-json;charset=utf-8");
-                        response.getWriter().write(gson.toJson(info));
                     }
                 }}
         } catch (FileUploadException e) {
@@ -247,7 +268,6 @@ public class Operationservlet extends BaseServlet{
                     System.out.println("filename.equals"+" ".equals(filename));
                     if(!filename.isEmpty()) {
 
-                        System.out.println("名称" + filename);
                         if (filename.substring(filename.lastIndexOf(".") + 1).equals("png")//判断是不是图片
                                 || filename.substring(filename.lastIndexOf(".") + 1).equals("jpg")
                                 || filename.substring(filename.lastIndexOf(".") + 1).equals("jpeg")) {
@@ -270,10 +290,7 @@ public class Operationservlet extends BaseServlet{
                             inf.setPlace(plist.get(0));   //将其他数据读出
                             inf.setEquip(plist.get(1));
                             inf.setDetail(plist.get(2));
-                            //inf.setState("待维修");
-                            //获取用户id
-                            //Userinfor usf=new Userinfor();
-                            // inf.setUserid(usf.findid(request,response));
+
                             if (ops.UpdateInfor(inf) == 1) {
                                 info.setFlag(1);
                             } else {

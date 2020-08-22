@@ -22,14 +22,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="8-19日 21：03">
+    <list default="true" id="be9c607a-025c-45be-90de-1c8358aa5b05" name="Default Changelist" comment="8-19日 22:37">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Admodify_user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/t2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/AdOpdao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/AdOpdao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/AdOpdaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/AdOpdaoimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/daomain/impl/Operationdaoimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/AdOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/AdOperationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/service/impl/AdOperationServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/service/impl/AdOperationServiceimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/AdOpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/AdOpServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Admin_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Admin_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Apply.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Apply.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Insert_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Insert_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Look_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Look_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/SearchUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/SearchUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/User_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/User_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modeify_infor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modeify_infor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/worker_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/worker_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/项目进度记录" beforeDir="false" afterPath="$PROJECT_DIR$/src/项目进度记录" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,9 +54,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -82,9 +95,10 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SHOU" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -97,7 +111,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.5407685" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="settings.editor.splitter.proportion" value="0.30812103" />
   </component>
   <component name="RecentsManager">
@@ -256,7 +270,9 @@
       <workItem from="1597416840413" duration="7123000" />
       <workItem from="1597557831667" duration="24039000" />
       <workItem from="1597654965294" duration="49225000" />
-      <workItem from="1597753329297" duration="39032000" />
+      <workItem from="1597753329297" duration="40230000" />
+      <workItem from="1597894618314" duration="237000" />
+      <workItem from="1597895026403" duration="14615000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Message">
       <created>1597719920789</created>
@@ -335,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597842219335</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="8-19日 22:37">
+      <created>1597847836759</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597847836759</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,6 +374,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -358,7 +382,8 @@
     <MESSAGE value="8-18日" />
     <MESSAGE value="8-19日" />
     <MESSAGE value="8-19日 21：03" />
-    <option name="LAST_COMMIT_MESSAGE" value="8-19日 21：03" />
+    <MESSAGE value="8-19日 22:37" />
+    <option name="LAST_COMMIT_MESSAGE" value="8-19日 22:37" />
   </component>
   <component name="WindowStateProjectService">
     <state x="498" y="0" key="#Project_Structure" timestamp="1596433991556">
@@ -373,11 +398,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="914" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1596641869805" />
-    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1597846443000">
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1597908249775">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596612153801" />
-    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597846443000" />
+    <state x="981" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597908249775" />
     <state x="449" y="95" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1596768829472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -390,31 +415,31 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1597807401649" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597677455245">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597896493338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1596613196055" />
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597677455245" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597896493338" />
     <state x="490" y="310" width="406" height="262" key="Github.ShareDialog" timestamp="1597721251388">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="310" width="406" height="262" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1597721251388" />
-    <state width="918" height="203" key="GridCell.Tab.0.bottom" timestamp="1597847567288">
+    <state width="1493" height="189" key="GridCell.Tab.0.bottom" timestamp="1597910832528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="918" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597847567288" />
-    <state width="918" height="203" key="GridCell.Tab.0.center" timestamp="1597847567288">
+    <state width="1493" height="189" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597910832528" />
+    <state width="1493" height="189" key="GridCell.Tab.0.center" timestamp="1597910832528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="918" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597847567288" />
-    <state width="918" height="203" key="GridCell.Tab.0.left" timestamp="1597847567287">
+    <state width="1493" height="189" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597910832528" />
+    <state width="1493" height="189" key="GridCell.Tab.0.left" timestamp="1597910832528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="918" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597847567287" />
-    <state width="918" height="203" key="GridCell.Tab.0.right" timestamp="1597847567288">
+    <state width="1493" height="189" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597910832528" />
+    <state width="1493" height="189" key="GridCell.Tab.0.right" timestamp="1597910832528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="918" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597847567288" />
+    <state width="1493" height="189" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597910832528" />
     <state width="1493" height="436" key="GridCell.Tab.1.bottom" timestamp="1597832891428">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -435,14 +460,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="317" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1597639829415" />
-    <state x="127" y="0" width="1270" height="824" key="SettingsEditor" timestamp="1597842433066">
+    <state x="158" y="0" width="1270" height="824" key="SettingsEditor" timestamp="1597895544056">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="127" y="0" width="1270" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597842433066" />
-    <state x="388" y="178" key="Vcs.Push.Dialog.v2" timestamp="1597842440845">
+    <state x="158" y="0" width="1270" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597895544056" />
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2" timestamp="1597847844502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="388" y="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597842440845" />
+    <state x="388" y="178" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597847844502" />
     <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597722244547">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -460,10 +485,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596603276562" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597741243110">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597904960914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597741243110" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597904960914" />
     <state x="470" y="95" key="spring file set editor" timestamp="1596767745665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -479,12 +504,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
-          <line>255</line>
+          <line>52</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/Operationservlet.java</url>
-          <line>584</line>
+          <line>601</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -513,15 +538,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
-          <line>30</line>
-          <properties class="cn.web.servlet.loginServlet" method="service">
+          <line>29</line>
+          <properties class="cn.web.servlet.loginServlet">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/cn/web/servlet/loginServlet.java</url>
-          <line>234</line>
+          <line>31</line>
           <properties class="cn.web.servlet.loginServlet" method="service">
             <option name="EMULATED" value="true" />
           </properties>
@@ -540,31 +565,26 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
           <line>23</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
           <line>25</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Apply.html</url>
           <line>26</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Seeinfor.html</url>
           <line>31</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/Look_user.html</url>
           <line>45</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
