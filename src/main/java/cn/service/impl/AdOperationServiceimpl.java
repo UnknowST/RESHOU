@@ -6,6 +6,7 @@ import cn.daomain.impl.AdOpdaoimpl;
 import cn.service.AdOperationService;
 
 import java.util.List;
+import java.util.Map;
 
 public class AdOperationServiceimpl implements AdOperationService {
     AdOpdao addao=new AdOpdaoimpl();
@@ -32,5 +33,10 @@ public class AdOperationServiceimpl implements AdOperationService {
     @Override
     public int Adupuser(User user) {
         return addao.Adupuser(user);
+    }
+
+    @Override
+    public Map<String, Object> lookmes() {
+        return addao.lookmes();
     }
 }

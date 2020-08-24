@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>adlookinfor</title>
+    <script src="Js/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function () {
+
+            $.ajax({
+                url:'adoperation/Lookinfor_all',
+                type:'get',
+                dataType:'json',
+                async:'false',
+                success:function (list) {
+                    var kai='<table id="b1" border="1" cellspacing="0"><th>序号</th>' +
+                        '<th>用户账号</th>' +
+                        '<th>地点</th>' +
+                        '<th>设备</th>' +
+                        '<th>详细信息</th>' +
+                        '<th>时间</th>' +
+                        '<th><select id="sta"><option>状态</option><option>待维修</option>' +
+                        '<option>已维修</option><option>正在维修</option></select></th>' +
+                        '<th>操作</th>'
+                    var jie='</table>'
+
+                    var li=" ",l2=" ",l3=" ",n=0;
+
+                    for(var i=0;i<list.Infor.length;i++){
+                        n++;
+                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                        '<td>'+list.Infor[i].userid +'</td>' +
+                        '<td>'+list.Infor[i].place +'</td>' +
+                        '<td>'+list.Infor[i].detail +'</td>' ;
+                    if(list.Infor[i].imagepath==null){
+                       l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                          '<td>'+list.Infor[i].createdate+'</td>'+
+                           '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                           '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                    }
+                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                        '<td>'+list.Infor[i].createdate+'</td>'+
+                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                    l3+=li+l2;
+                    }
+                    $("#d1").html(kai+l3+jie)
+                    $("#sta").change(function () {
+                        var text=$("#sta option:selected").text();
+                        alert(text)
+                    /*    var obj=$("td[id]");  //查找所有具有id属性的td   //方法不可取
+                        for (var j = obj.length - 1; j >= 0; j--) {
+                            console.log(obj[j])
+                            var i=obj[j].id;
+                            var te=$("td[id='"+i+"']").text();
+                            if(te!=text){
+                                $("tr[id='"+i+"']").empty()   //删除指定id 的tr
+
+                            }
+
+
+                        }*/
+                        n=0;
+                        var li1=" ",li2=" ",li3=" ";
+
+                        for(var i=0;i<list.Infor.length;i++){
+                            if(list.Infor[i].state==text&&text!="状态"){
+                                n++;
+                                li1='<tr id="'+i+'"><td>'+n+'</td>' +
+                                    '<td>'+list.Infor[i].userid +'</td>' +
+                                    '<td>'+list.Infor[i].place +'</td>' +
+                                    '<td>'+list.Infor[i].detail +'</td>' ;
+                                if(list.Infor[i].imagepath==null){
+                                    li2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                }
+                                else li2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                    '<td>'+list.Infor[i].createdate+'</td>'+
+                                    '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                    '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                li3+=li1+li2;
+                            }
+
+                        }
+                        $("#d1").empty();
+                        $("#d1").html(kai+li3+jie)
+
+
+                    })
+
+
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="d1"></div>
+</body>
+</html>

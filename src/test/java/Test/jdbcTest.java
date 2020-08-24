@@ -1,12 +1,16 @@
 package Test;
 
+import cn.dao.Infor;
 import cn.dao.User;
 import cn.jdbcutils.JDBCUtils;
+import cn.service.AdOperationService;
 import cn.service.LoginService;
 import cn.service.OperationService;
+import cn.service.impl.AdOperationServiceimpl;
 import cn.service.impl.LoginServiceimpl;
 import cn.service.impl.OperationServiceimpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.junit.Test;
@@ -61,6 +65,16 @@ public class jdbcTest {
 
 
 
+
+    }
+    @Test
+    public void Lookinfor_all() {
+        AdOperationService ado=new AdOperationServiceimpl();
+        Map<String,Object> map=new HashMap<>();
+        map=ado.lookmes();
+
+        Gson gson=new Gson();
+        System.out.println(gson.toJson(map));
 
     }
 }

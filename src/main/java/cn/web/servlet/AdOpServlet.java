@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -134,4 +135,23 @@ public class AdOpServlet extends BaseServlet {
     }
 
 
+
+    /**
+     * 查看所有的维修记录和回复消息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void Lookinfor_all(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        Map<String,Object> map=new HashMap<>();
+        map=ado.lookmes();
+        writeValue(map,response);
+
+    }
+
 }
+

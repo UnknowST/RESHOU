@@ -3,6 +3,7 @@ package cn.service;
 import cn.dao.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AdOperationService {
     /**
@@ -38,4 +39,10 @@ public interface AdOperationService {
      * @return
      */
     int Adupuser(User user);
+
+    /**
+     * 读出所有的维修消息和工人回复消息
+     * @return
+     */
+    Map<String,Object> lookmes();
 }
