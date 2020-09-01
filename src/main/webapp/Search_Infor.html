@@ -28,6 +28,12 @@
                             '<th>操作</th>'
                         var jie='</table>'
                         var li=" ",l2=' ',l3=" ",n=0;
+                        //监听select
+                        $("div select").change(function () {
+                            alert("change")
+                            console.log($("div select"))
+                        })
+
                         //判断userid
                         if(userid.length!=0&&place.length==0&&equip.length==0&&eval.length==0){
                             for(var i=0;i<list.Infor.length;i++){
@@ -44,12 +50,14 @@
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                 }
                                 else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                     '<td>'+list.Infor[i].createdate+'</td>'+
                                     '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                    '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                    '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                    '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                 l3+=li+l2;
                             }}
 
@@ -71,12 +79,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -98,12 +108,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -125,12 +137,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -152,12 +166,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -179,12 +195,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -206,12 +224,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -233,12 +253,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -260,12 +282,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -287,12 +311,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -314,12 +340,14 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }}
 
@@ -341,22 +369,64 @@
                                             '<td>'+list.Infor[i].createdate+'</td>'+
                                             '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
 
-                                            '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     }
                                     else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
                                         '<td>'+list.Infor[i].createdate+'</td>'+
                                         '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
-                                        '<td><a href="javascript:void(0)">详情</a></td></tr>';
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
                                     l3+=li+l2;
                                 }
 
                         }
                         if(l2.length==0){
 
-                            alert("结果为空。")
+                            alert("结果为空。")   //待修改
                         }
                         else {
                         $("#div1").html(kai+l3+jie)
+                        }
+                        //监听超链接
+                        //删除
+                        var obj = $("a:odd");  //选择基数的超链接
+
+                        for (var j = obj.length - 1; j >= 0; j--) {
+
+                            obj[j].onclick = function () {
+                                //var couns = $("#option option:selected").text();
+                                var num = list.Infor[this.id].cid;  //获取编号
+                                var t1=this.id;
+                                $.ajax({
+                                    url: "adoperation/DeleteInfor",
+                                    type: "post",
+                                    data: {"num":num},
+                                    dataType: "json",
+                                    async: false,
+                                    success: function (data) {
+                                        if (data.flag == "1") {
+                                            alert("删除成功")
+                                            $("tr[id='"+t1+"']").empty()
+                                        } else {
+                                            alert(data.errorMsg)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                        //查看详情
+                        var obj = $("a:even");  //选择偶数的超链接
+                        for (var j = obj.length - 1; j >= 0; j--) {
+                            obj[j].onclick = function () {
+                                //var couns = $("#option option:selected").text();
+                                var num = list.Infor[this.id].cid;  //获取编号
+                                var t1=this.id;
+
+                                // <a href='+"Infor_details.html?num="+data[i].cid+'>
+                                window.location.href="Infor_details.html?num="+num;
+
+                            }
                         }
 
 

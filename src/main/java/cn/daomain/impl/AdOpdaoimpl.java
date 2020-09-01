@@ -1,5 +1,6 @@
 package cn.daomain.impl;
 
+import cn.dao.Bill;
 import cn.dao.Infor;
 import cn.dao.Replay;
 import cn.dao.User;
@@ -76,5 +77,40 @@ public class AdOpdaoimpl implements AdOpdao {
         map.put("Infor",list);
         map.put("Replay",list1);
         return map;
+    }
+
+    @Override
+    public int DeletrInfor(String num) {
+        int m=0;
+        int n=template.update("delete from infor where cid=?",num);
+        Replay rep=template.queryForObject("select * from replay where cid=?",new BeanPropertyRowMapper<Replay>(Replay.class),num);
+        if(rep!=null){
+            m=template.update("delete from replay where cid=?",num);
+
+        }else m=1;
+
+        if(n==1&&m==1) return 1;
+        else return 0;
+
+    }
+
+    @Override
+    public List<Bill> ReaderBill() {
+        return template.query("select * from bill",new BeanPropertyRowMapper<Bill>(Bill.class));
+    }
+
+    @Override
+    public Bill ReaderBillnum(String num) {
+        return template.queryForObject("select * from bill where snum=?",new BeanPropertyRowMapper<Bill>(Bill.class),num);
+    }
+
+    @Override
+    public int UpdateBill(Bill bill) {
+        return template.update("update bill set cost=?,place=?,useing=? where snum=?",bill.getCost(),bill.getPlace(),bill.getUseing(),bill.getSnum());
+    }
+
+    @Override
+    public int DeleteBill(String snum) {
+        return template.update("delete from bill where snum=?",snum);
     }
 }

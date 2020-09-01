@@ -1,5 +1,6 @@
 package cn.service;
 
+import cn.dao.Bill;
 import cn.dao.User;
 
 import java.util.List;
@@ -45,4 +46,40 @@ public interface AdOperationService {
      * @return
      */
     Map<String,Object> lookmes();
+
+    /**
+     * 删除指定维修信息和回复信息
+     * @param num
+     * @return
+     */
+    int DeletrInfor(String num);
+
+    /**
+     * 读出所有的账单记录
+     * @return
+     */
+    List<Bill> ReaderBill() ;
+
+    /**
+     * 读出指定单号的账单记录
+     * @param num
+     * @return
+     */
+    Bill ReaderBillnum(String num);
+
+    /**
+     * 管理员更新bill信息
+     * @param bill
+     * @return
+     */
+    int UpdateBill(Bill bill);
+
+    /**
+     * 管理员删除bill表的指定记录
+     * @param snum
+     * @return
+     */
+    int DeleteBill(String snum);
+
+
 }

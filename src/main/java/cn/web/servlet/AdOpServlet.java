@@ -1,5 +1,6 @@
 package cn.web.servlet;
 
+import cn.dao.Bill;
 import cn.dao.ResultInfo;
 import cn.dao.User;
 import cn.service.AdOperationService;
@@ -151,6 +152,106 @@ public class AdOpServlet extends BaseServlet {
         map=ado.lookmes();
         writeValue(map,response);
 
+    }
+
+    /**
+     * 管理员删除指定的infor和replay记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void DeleteInfor(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        String num=request.getParameter("num");
+        if(ado.DeletrInfor(num)==1){
+            info.setFlag(1);
+        }else {
+            info.setFlag(0);
+            info.setErrorMsg("删除失败!");
+        }
+        //json格式返回数据
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+
+    }
+
+    /**
+     * 读出账单记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void ReaderBill(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        List<Bill> list=ado.ReaderBill();
+        writeValue(list,response);
+    }
+
+    /**
+     * 读出指定单号的账单记录
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void ReaderBillnum(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+       Bill bill=ado.ReaderBillnum(request.getParameter("num"));
+       writeValue(bill,response);
+    }
+
+    /**
+     * 管理员更新bill表
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void UpdateBill(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        //获取数据
+        Map<String, String[]> map = request.getParameterMap();
+        Bill bill=new Bill();
+        try {
+            BeanUtils.populate(bill, map);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        if(ado.UpdateBill(bill)==1){
+            info.setFlag(1);
+        }else {
+            info.setFlag(0);
+            info.setErrorMsg("修改失败请重新修改!");
+        }
+
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+    }
+    public void DeleteBill(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+        //获取数据
+
+        if(ado.DeleteBill(request.getParameter("num"))==1){
+            info.setFlag(1);
+        }else {
+            info.setFlag(0);
+            info.setErrorMsg("删除失败!");
+        }
+
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
     }
 
 }

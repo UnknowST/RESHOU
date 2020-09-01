@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modifbill</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            function getnum(qs) {
+                var s=location.href;
+                s=s.replace("?","?&").split("&");
+                var re="";
+                for (i=1;i<s.length;i++){
+                    if(s[i].indexOf(qs+"=")==0){
+                        re=s[i].replace(qs+"=","");
+                    }
+                }
+                return re;
+            }
+            num=getnum('num') //获取地址栏的数据
+
+            //获取数据
+            $.ajax({
+                url:'adoperation/ReaderBillnum',
+                type:'get',
+                data:{'num':num},
+                dataType:'json',
+                async:false,
+                success:function (data) {
+                    $("#td1").html(data.num)
+                    $("#td2").html(data.workerid)
+                    $("#cost").val(data.cost)
+                    $("#place").val(data.place)
+                    $("#useing").val(data.useing)
+                    $("#btn1").click(function () {
+                        $.ajax({
+                            url:'adoperation/UpdateBill',
+                            type: 'post',
+                            dataType: 'json',
+                            data:{'snum':data.snum,"place":$("#place").val(),"useing":$("#useing").val(),'cost':$("#cost").val()},
+                            async: false,
+                            success:function (data) {
+                                if(data.flag==1){
+                                    alert("修改成功!")
+                                    window.history.go(0)    //刷新页面
+                                }else
+                                {
+                                    alert(data.errorMsg)
+                                }
+                            }
+                        })
+                    })
+
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td><label>单号:</label></td>
+            <td id="td1"></td>
+        </tr>
+        <tr>
+            <td><label>工人账号:</label></td>
+            <td id="td2"></td>
+        </tr>
+        <tr>
+            <td><label>金额:</label></td>
+            <td><input type="text" id="cost"></td>
+        </tr>
+        <tr>
+            <td><label>花费地点:</label></td>
+            <td><input type="text" id="place"></td>
+        </tr>
+        <tr>
+            <td><label>用途</label></td>
+            <td><input type="text" id="useing"></td>
+        </tr>
+      <tr>
+          <td><input type="button" value="确认修改" id="btn1"></td>
+          <td><input type="button" value="返回" id="btn2" onclick="window.location.href='SearchBill.html'" >
+          </td>
+      </tr>
+    </table>
+</form>
+
+</body>
+</html>

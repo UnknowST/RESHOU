@@ -1,5 +1,6 @@
 package cn.service.impl;
 
+import cn.dao.Bill;
 import cn.dao.User;
 import cn.daomain.AdOpdao;
 import cn.daomain.impl.AdOpdaoimpl;
@@ -38,5 +39,30 @@ public class AdOperationServiceimpl implements AdOperationService {
     @Override
     public Map<String, Object> lookmes() {
         return addao.lookmes();
+    }
+
+    @Override
+    public int DeletrInfor(String num) {
+        return addao.DeletrInfor(num);
+    }
+
+    @Override
+    public List<Bill> ReaderBill() {
+        return addao.ReaderBill();
+    }
+
+    @Override
+    public Bill ReaderBillnum(String num) {
+        return addao.ReaderBillnum(num);
+    }
+
+    @Override
+    public int UpdateBill(Bill bill) {
+        return addao.UpdateBill(bill);
+    }
+
+    @Override
+    public int DeleteBill(String snum) {
+        return addao.DeleteBill(snum);
     }
 }
