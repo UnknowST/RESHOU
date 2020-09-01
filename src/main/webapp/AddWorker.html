@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addworker</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        function checkmail() {
+            var reg_mail=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+            var mail=$("#mail").val();
+            if(mail==null||mail==""){
+                $("#c_mail").html("请输入邮箱地址")
+                return false;
+            }else{
+                var flag1=reg_mail.test(mail)
+                if(flag1){
+                    $("#c_mail").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                    return true;
+
+                }else {
+                    $("#c_mail").html("格式错误")
+                    return false;}
+            }
+
+        }
+        function checkname(){
+            var name=document.getElementById("name").value;
+            if(name==null||name==""){
+                $("#c_name").html("请输入姓名")
+                return false;
+            }else{
+                $("#c_name").html("<img width='35' height='25' src='images/timg.jpg'/>")
+                return true;
+            }
+        }
+        function checkphone(){
+            var phone=document.getElementById("phone").value;
+            var re=/^1[3456789]\d{9}$/
+            var flag=re.test(phone)
+            var s_tel=document.getElementById("c_phone")
+            if(flag){
+                //提示绿色对勾
+                s_tel.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+            }else{
+
+                s_tel.innerHTML = "手机号格式错误";
+            }
+            return flag;
+        }
+        function checksex() {
+            var sex=document.getElementById("sex").value;
+
+            var s_sex=document.getElementById("c_sex")
+            if(sex==0){
+                s_sex.innerHTML = "请选择性别";
+                return false;
+            }else{
+                //提示绿色对勾
+                s_sex.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+                return true;
+            }
+
+        }
+
+        function checkposition() {
+            var sex=document.getElementById("position").value;
+
+            var s_sex=document.getElementById("c_p")
+            if(sex==0){
+                s_sex.innerHTML = "请选择职位";
+                return false;
+            }else{
+                //提示绿色对勾
+                s_sex.innerHTML = "<img width='35' height='25' src='images/timg.jpg'/>";
+                return true;
+            }
+
+        }
+        var newid;
+        $(function () {
+            //获取id
+            $.ajax({
+                url:"adoperation/SelectWorkerId",
+                type:'get',
+                dataType:'json',
+                async:false,
+                success:function (data) {
+                $("#td1").html(data.id);
+                newid=data.id;
+                }
+            })
+            $("#btn1").click(function () {
+                if(checkposition()&&checkmail()&&checkname()&&checkphone()&&checksex()){
+                  $.ajax({
+                      url:'adoperation/InsertWorker',
+                      type: 'post',
+                      data:{"id":newid,"name":$("#name").val(),"phone":$("#phone").val(),"gender":$("#sex").val(),"mail":$("#mail").val(),"position":$("#position").val(),"password":12345},
+                      dataType: 'json',
+                      async: false,
+                      success:function (data) {
+                        if(data.flag==1){
+                            alert("添加成功,初始密码为12345");
+                            window.history.go(0)    //刷新页面
+                        }
+                        else{
+                            alert(data.errorMsg)
+                        }
+                      }
+
+                  })
+                }else return false;
+            })
+            $("#name").blur(checkname)
+            $("#phone").blur(checkphone)
+            $("#sex").blur(checksex)
+            $("#position").blur(checkposition)
+            $("#mail").blur(checkmail)
+
+        })
+    </script>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td><label>账号:</label></td>
+            <td id="td1">
+                <span id=""></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label>姓名:</label></td>
+            <td><input type="text" id="name" placeholder="请输入姓名">
+                <span id="c_name"></span></td>
+        </tr>
+        <tr>
+            <td><label>电话:</label></td>
+            <td><input type="text" id="phone" placeholder="请输入电话">
+                <span id="c_phone"></span></td>
+        </tr>
+        <tr>
+            <td><label>邮箱地址:</label></td>
+            <td><input type="email" id="mail" placeholder="请输入邮箱地址">
+                <spna id="c_mail"></spna></td>
+        </tr>
+        <tr>
+            <td><label>性别:</label></td>
+            <td>
+                <select id="sex">
+                    <option value="W">女</option>
+                    <option value="M">男</option>
+                </select>
+                <span id="c_sex"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label>职位:</label></td>
+            <td>
+                <!--暂时这样写-->
+                <select id="position">
+                    <option>经理</option>
+                    <option>普工</option>
+                </select>
+                <span id="c_p"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" id="btn1" value="添加"></td>
+            <td><input type="reset" id="btn2" value="重填"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

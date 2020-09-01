@@ -1,9 +1,6 @@
 package cn.daomain.impl;
 
-import cn.dao.Bill;
-import cn.dao.Infor;
-import cn.dao.Replay;
-import cn.dao.User;
+import cn.dao.*;
 import cn.daomain.AdOpdao;
 import cn.jdbcutils.JDBCUtils;
 import org.springframework.dao.DataAccessException;
@@ -111,6 +108,24 @@ public class AdOpdaoimpl implements AdOpdao {
 
     @Override
     public int DeleteBill(String snum) {
+
         return template.update("delete from bill where snum=?",snum);
+    }
+
+    @Override
+    public String SelectWorkerId() {
+        return String.valueOf(template.queryForInt("select MAX(id) from worker"));
+    }
+
+    @Override
+    public List<Worker> ReaderWork() {
+        return template.query("select * from worker",new BeanPropertyRowMapper<Worker>(Worker.class));
+    }
+
+    @Override
+    public int InsertWorker(Worker worker) {
+        return template.update("insert into worker(id,password,name,gender,phone,mail,position) values(?,?,?,?,?,?,?)",
+                worker.getid(),worker.getPassword(),worker.getName(),worker.getGender(),worker.getPhone(),worker.getMail(),worker.getPosition()
+                );
     }
 }

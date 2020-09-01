@@ -2,6 +2,7 @@ package cn.service;
 
 import cn.dao.Bill;
 import cn.dao.User;
+import cn.dao.Worker;
 
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,25 @@ public interface AdOperationService {
      * @return
      */
     int DeleteBill(String snum);
+
+    /**
+     * 查询当前工人的最后一个账号
+     * @return
+     */
+    String SelectWorkerId();
+
+    /**
+     * 读出worker表中的记录
+     * @return
+     */
+    List<Worker> ReaderWork();
+
+    /**
+     * 增加工人记录
+     * @param worker
+     * @return
+     */
+    int InsertWorker(Worker worker);
 
 
 }

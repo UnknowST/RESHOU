@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchworker</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <link href="css/popup.css">
+    <script>
+        $(function () {
+            $.ajax({
+                url:'adoperation/ReaderWorker',
+                type:'get',
+                dataType:'json',
+                async:'false',
+                success:function (list) {
+                  var li=" ",n=0;
+                  for(var i=0;i<list.length;i++){
+                      n++;
+                      li+='<tr id="tr1"><td>'+n+'</td>' +
+                          '<td>'+list[i].id+'</td>' +
+                          '<td>'+list[i].name+'</td>' +
+                          '<td>'+list[i].phone+'</td>' +
+                          '<td>'+list[i].gender+'</td>' +
+                          '<td>'+list[i].mail+'</td>' +
+                          '<td>'+list[i].position+'</td>' +
+                          '<td>'+list[i].workstate+'</td>' +
+                          '<td>'+list[i].sum_eval+'</td>' +
+                          '<td>'+list[i].createdate+'</td>' +
+                          '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                          '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                  }
+                    $("#ta1 ").append(li)
+                    //监听性别选择框
+                    $("#gender").change(function () {
+                        //获取value
+                       var sex= $("#gender option:selected").val()
+                        var l1=" ";
+                        n=0;
+                        if(sex!=0){
+                        for(var i=0;i<list.length;i++){
+                            if(list[i].gender==sex){
+                            n++;
+                            l1+='<tr id="tr1"><td>'+n+'</td>' +
+                                '<td>'+list[i].id+'</td>' +
+                                '<td>'+list[i].name+'</td>' +
+                                '<td>'+list[i].phone+'</td>' +
+                                '<td>'+list[i].gender+'</td>' +
+                                '<td>'+list[i].mail+'</td>' +
+                                '<td>'+list[i].position+'</td>' +
+                                '<td>'+list[i].workstate+'</td>' +
+                                '<td>'+list[i].sum_eval+'</td>' +
+                                '<td>'+list[i].createdate+'</td>' +
+                                '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                                '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                        }}
+                            $("tr[id]").remove();
+                            $("#ta1").append(l1)
+                        }else {
+                            $("tr[id]").remove();   //删除带有Id属性的tr
+                            $("#ta1").append(li)
+                        }
+
+
+                    })
+                    //监听职位选择框的变化
+                    $("#posi").change(function () {
+                        var text=$("#posi option:selected").text();
+                        var l2=" ";
+                        n=0;
+                        if(text.length!=0){
+                            for(var i=0;i<list.length;i++){
+                                if(list[i].position==text){
+                                    n++;
+                                    l2+='<tr id="tr1"><td>'+n+'</td>' +
+                                        '<td>'+list[i].id+'</td>' +
+                                        '<td>'+list[i].name+'</td>' +
+                                        '<td>'+list[i].phone+'</td>' +
+                                        '<td>'+list[i].gender+'</td>' +
+                                        '<td>'+list[i].mail+'</td>' +
+                                        '<td>'+list[i].position+'</td>' +
+                                        '<td>'+list[i].workstate+'</td>' +
+                                        '<td>'+list[i].sum_eval+'</td>' +
+                                        '<td>'+list[i].createdate+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                                        '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                                }}
+                            $("tr[id]").remove();
+                            $("#ta1").append(l2)
+                        }else {
+                            $("tr[id]").remove();   //删除带有Id属性的tr
+                            $("#ta1").append(li)
+                        }
+
+                    })
+                    var obj=$("table>a")  //选择偶数的超链接
+                    for (var j = obj.length - 1; j >= 0; j--) {
+
+                        obj[j].onclick = function () {
+                            var num = this.id;  //获取编号
+                            alert(this.id)
+                            //window.location.href="ModifBill.html?num="+num;
+                        }
+                    }
+
+
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<table>
+    <tr><td>账号:</td>
+        <td><input type="text" id="workerid"  ></td>
+        <td rowspan="4"><input type="button" value="搜索" id="btn1"></td>
+    </tr>
+    <tr><td>姓名:</td>
+        <td><input type="text" id="name"  ></td>
+    </tr>
+    <tr><td>职位:</td>
+        <td><input type="text" id="position"  ></td>
+    </tr>
+    <tr><td>性别:</td>
+        <td><input type="text" id="sex"  ></td>
+    </tr>
+</table>
+<div id="div1" >
+    <table id="ta1" border="1" cellspacing="0">
+        <th>序号</th>
+        <th>账号</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>性别<select id="gender">
+            <option value="0"></option>
+            <option value="M">男</option>
+            <option value="W">女</option>
+        </select></th>
+        <th>邮箱</th>
+        <th>职位<select id="posi">
+            <option value="0"></option>
+            <option>经理</option>
+            <option>普工</option>
+        </select></th>
+        <th>当班状态</th>
+        <th>评分</th>
+        <th>入职时间</th>
+        <th>操作</th>
+
+    </table>
+</div>
+<!--弹窗div-->
+<div2 id="contes" style="display: none">
+
+    <div3 style="width:500px;height:40px;display: none">
+
+        修改基本信息
+
+        <hr>
+        <form id="modifuser" style=" margin-left: 100px;">
+            <table>
+                <tr>
+                    <td ><label for="username">用户名</label></td>
+                    <td > <input type="username" name="username" id="username"  placeholder="请输入用户名">
+                        <span id="checkusername"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td ><label for="mail">邮箱</label></td>
+                    <td >  <input type="email" name="mail" id="mail" placeholder="请输入邮箱" >
+                        <span id="checkemail"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td ><label for="phone">手机号</label></td>
+                    <td > <input type="test" name="phone" id="phone" placeholder="请输入手机号" >
+                        <span id="checktel"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text"><label for="check">验证码</label></td>
+                    <td class="f_td"><input name="check" id="check" type="text" placeholder="请输入验证码" autocomplete="off">
+                        <span><img src="checkCode" alt="" id="code" onclick="changeCheckCode(this)"></span>
+                        <span id="check_code"></span>
+                        <script type="text/javascript">
+                            //图片点击事件
+                            function changeCheckCode(img) {
+                                img.src="checkCode?"+new Date().getTime();
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="but1" value="取消"></td>
+                    <td><input type="button" id="but2" value="修改"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div3>
+
+</div2>
+
+<div4 id="all_light">
+
+</div4>
+
+</body>
+</html>

@@ -77,4 +77,16 @@ public class jdbcTest {
         System.out.println(gson.toJson(map));
 
     }
+    @Test
+    public void SelectId(){
+        AdOperationService ado=new AdOperationServiceimpl();
+        Map<String,Integer> map=new HashMap<>();
+        String id=ado.SelectWorkerId();
+        int newid=Integer.parseInt(id);
+        newid+=1;
+        map.put("id",newid);
+
+        Gson gson=new Gson();
+        System.out.println(gson.toJson(map));
+    }
 }

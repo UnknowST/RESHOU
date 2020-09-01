@@ -3,6 +3,7 @@ package cn.daomain;
 import cn.dao.Bill;
 import cn.dao.Infor;
 import cn.dao.User;
+import cn.dao.Worker;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,7 @@ public interface AdOpdao {
     Bill ReaderBillnum(String num);
     int UpdateBill(Bill bill);
     int DeleteBill(String snum);
+    String SelectWorkerId( );
+    List<Worker> ReaderWork();
+    int InsertWorker(Worker worker);
 }
