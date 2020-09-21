@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admodifworker</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        function getnum(qs) {
+            var s=location.href;
+            s=s.replace("?","?&").split("&");
+            var re="";
+            for (i=1;i<s.length;i++){
+                if(s[i].indexOf(qs+"=")==0){
+                    re=s[i].replace(qs+"=","");
+                }
+            }
+            return re;
+        }
+
+        re= getnum('num');
+
+        //读取数据
+        $(function () {
+            $.ajax({
+                url:'adoperation/ReaderSnum',
+                data:{"num":re},
+                dataType:'json',
+                async:false,
+                success:function (data){
+                    console.log(data)
+                    $("#td1").html(data.id);
+                    $("#name").val(data.name)
+                    $("#phone").val(data.phone)
+                    $("#mail").val(data.mail)
+
+                      var obj=$("input:radio")
+
+                    for(var i=0;i<obj.length;i++){
+                        alert(obj[i].attributes["value"].nodeValue)
+                        if(obj[i].attributes["value"].nodeValue===data.gender){
+                           obj[i].getAttribute("checked","true")
+                        }
+                    }
+
+
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+        <td>账号</td>
+        <td id="td1"></td>
+        </tr>
+        <tr>
+            <td>姓名:</td>
+            <td ><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>电话</td>
+            <td><input type="text" id="phone"></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td><input type="radio" name="gender" value="M">女
+             <input type="radio" name="gender" value="W">男
+            </td>
+        </tr>
+        <tr>
+            <td>邮箱</td>
+            <td><input type="email" id="mail"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="修改职位" id="btn1"></td>
+            <td><input type="button" value="修改当班状态" id="btn2"></td>
+            <td><input type="button" value="确认修改" id="btn3"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

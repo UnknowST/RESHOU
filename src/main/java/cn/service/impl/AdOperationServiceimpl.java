@@ -81,4 +81,14 @@ public class AdOperationServiceimpl implements AdOperationService {
     public int InsertWorker(Worker worker) {
         return addao.InsertWorker(worker);
     }
+
+    @Override
+    public int DeleteWorker(String snum) {
+        return addao.DeleteWorker(snum);
+    }
+
+    @Override
+    public Worker ReaderSNum(String snum) {
+        return addao.ReaderSNum(snum);
+    }
 }

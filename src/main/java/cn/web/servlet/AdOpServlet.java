@@ -337,5 +337,43 @@ public class AdOpServlet extends BaseServlet {
 
     }
 
+    /**
+     * 删除指定的员工信息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void DeleteWorker(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+
+        if(ado.DeleteWorker(request.getParameter("snum"))==1){
+            info.setFlag(1);
+        }else {
+            info.setFlag(0);
+            info.setErrorMsg("删除失败!");
+        }
+
+        response.setContentType("application/x-json;charset=utf-8");
+        response.getWriter().write(gson.toJson(info));
+
+    }
+
+    /**
+     * 根据snum读取worker信息
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void ReaderSnum(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InvocationTargetException, IllegalAccessException{
+      writeValue(ado.ReaderSNum(request.getParameter("num")),response);
+    }
+
 }
 

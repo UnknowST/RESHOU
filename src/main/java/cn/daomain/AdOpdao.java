@@ -24,4 +24,6 @@ public interface AdOpdao {
     String SelectWorkerId( );
     List<Worker> ReaderWork();
     int InsertWorker(Worker worker);
+    int DeleteWorker(String snum);
+    Worker ReaderSNum(String snum);
 }

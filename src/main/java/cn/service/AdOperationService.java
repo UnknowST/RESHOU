@@ -101,5 +101,19 @@ public interface AdOperationService {
      */
     int InsertWorker(Worker worker);
 
+    /**
+     * 删除指定的员工信息
+     * @param snum
+     * @return
+     */
+    int DeleteWorker(String snum);
+
+    /**
+     * 根据snum查找worker
+     * @param snum
+     * @return
+     */
+    Worker ReaderSNum(String snum);
+
 
 }

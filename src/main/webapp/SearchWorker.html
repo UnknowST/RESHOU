@@ -6,13 +6,16 @@
     <script src="Js/jquery-3.3.1.js"></script>
     <link href="css/popup.css">
     <script>
+        var  tlist,obj=null,obj1=null
         $(function () {
+
             $.ajax({
                 url:'adoperation/ReaderWorker',
                 type:'get',
                 dataType:'json',
                 async:'false',
                 success:function (list) {
+                    tlist=list;
                   var li=" ",n=0;
                   for(var i=0;i<list.length;i++){
                       n++;
@@ -27,9 +30,12 @@
                           '<td>'+list[i].sum_eval+'</td>' +
                           '<td>'+list[i].createdate+'</td>' +
                           '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
-                          '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                          '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'" onclick="modif()">修改信息</a></td></tr>'
                   }
                     $("#ta1 ").append(li)
+                    obj=$("a:even")  //获取0，2，4。。。
+                    obj1=$("a:odd")  //获取1,3,5...
+                    aclick(obj,obj1);
                     //监听性别选择框
                     $("#gender").change(function () {
                         //获取value
@@ -55,14 +61,21 @@
                         }}
                             $("tr[id]").remove();
                             $("#ta1").append(l1)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
                         }else {
                             $("tr[id]").remove();   //删除带有Id属性的tr
                             $("#ta1").append(li)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
                         }
 
 
                     })
                     //监听职位选择框的变化
+
                     $("#posi").change(function () {
                         var text=$("#posi option:selected").text();
                         var l2=" ";
@@ -86,30 +99,67 @@
                                 }}
                             $("tr[id]").remove();
                             $("#ta1").append(l2)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
                         }else {
                             $("tr[id]").remove();   //删除带有Id属性的tr
                             $("#ta1").append(li)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
                         }
-
                     })
-                    var obj=$("table>a")  //选择偶数的超链接
-                    for (var j = obj.length - 1; j >= 0; j--) {
-
-                        obj[j].onclick = function () {
-                            var num = this.id;  //获取编号
-                            alert(this.id)
-                            //window.location.href="ModifBill.html?num="+num;
-                        }
-                    }
-
 
                 }
             })
+
         })
+
+function aclick(obj,obj1){   //obj对应删除 obj1对于修改信息
+
+    for (var j = obj.length - 1; j >= 0; j--) {
+
+        obj[j].onclick = function () {
+            var num = tlist[this.id].snum;  //获取编号
+
+            $.ajax({
+                url:'adoperation/DeleteWorker',
+                data:{"snum":num},
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success:function (data){
+                    if(data.flag==1){
+                        alert("删除成功");
+                        window.history.go(0)    //刷新页面
+                    }else{
+                        alert(data.errorMsg);
+                    }
+                }
+            })
+
+        }
+    }
+
+
+    for (var i = obj1.length - 1; i >= 0; i--) {
+        obj1[i].onclick = function () {
+            var num = tlist[this.id].snum;  //获取编号
+            window.location.href="Admodifworker.html?num="+num;
+
+
+        }
+    }
+}
+
 
     </script>
 </head>
 <body>
+
+
+
 <table>
     <tr><td>账号:</td>
         <td><input type="text" id="workerid"  ></td>
@@ -125,7 +175,7 @@
         <td><input type="text" id="sex"  ></td>
     </tr>
 </table>
-<div id="div1" >
+
     <table id="ta1" border="1" cellspacing="0">
         <th>序号</th>
         <th>账号</th>
@@ -148,63 +198,11 @@
         <th>操作</th>
 
     </table>
-</div>
-<!--弹窗div-->
-<div2 id="contes" style="display: none">
 
-    <div3 style="width:500px;height:40px;display: none">
 
-        修改基本信息
 
-        <hr>
-        <form id="modifuser" style=" margin-left: 100px;">
-            <table>
-                <tr>
-                    <td ><label for="username">用户名</label></td>
-                    <td > <input type="username" name="username" id="username"  placeholder="请输入用户名">
-                        <span id="checkusername"></span>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td ><label for="mail">邮箱</label></td>
-                    <td >  <input type="email" name="mail" id="mail" placeholder="请输入邮箱" >
-                        <span id="checkemail"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td ><label for="phone">手机号</label></td>
-                    <td > <input type="test" name="phone" id="phone" placeholder="请输入手机号" >
-                        <span id="checktel"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text"><label for="check">验证码</label></td>
-                    <td class="f_td"><input name="check" id="check" type="text" placeholder="请输入验证码" autocomplete="off">
-                        <span><img src="checkCode" alt="" id="code" onclick="changeCheckCode(this)"></span>
-                        <span id="check_code"></span>
-                        <script type="text/javascript">
-                            //图片点击事件
-                            function changeCheckCode(img) {
-                                img.src="checkCode?"+new Date().getTime();
-                            }
-                        </script>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="button" id="but1" value="取消"></td>
-                    <td><input type="button" id="but2" value="修改"></td>
-                </tr>
-            </table>
-        </form>
 
-    </div3>
-
-</div2>
-
-<div4 id="all_light">
-
-</div4>
 
 </body>
 </html>

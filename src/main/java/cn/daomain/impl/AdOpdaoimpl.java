@@ -128,4 +128,14 @@ public class AdOpdaoimpl implements AdOpdao {
                 worker.getid(),worker.getPassword(),worker.getName(),worker.getGender(),worker.getPhone(),worker.getMail(),worker.getPosition()
                 );
     }
+
+    @Override
+    public int DeleteWorker(String snum) {
+        return template.update("delete from worker where snum=?",snum);
+    }
+
+    @Override
+    public Worker ReaderSNum(String snum) {
+        return template.queryForObject("select * from worker where snum=?",new BeanPropertyRowMapper<Worker>(Worker.class),snum);
+    }
 }
