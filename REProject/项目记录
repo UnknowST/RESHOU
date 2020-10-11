@@ -1,0 +1,25 @@
+项目可以成功运行
+mapper配置文件中取别名只用使用权限名
+
+之后需要探索怎么实现controller和ajax结合使用
+
+使用maven集成tomcat7后 jsp的标签库不能解析
+使用maven集成tomcat8失败
+
+还是老老实实发布到tomcat8吧
+
+controller和html ajax的交互成功
+前台传输数据的方法
+    前台传输数据到后台直接采用ajax传输json格式数据的方式
+后台传输数据到前台因为是静态页面 所以只能采取json格式或者是string文本的方式
+        因为我在后台集成了一个总的Controller类
+        之后的所有Conroller都应该继承该方法 总controller方法中主要放的就是json数据的方法，所以这也间接的完成了后台数据到前台数据的传输
+        原本controller与前台数据最好的结合方式就是利用jsp的标签库 这样就不用在后台先把数据json化再传到前台
+
+问题：
+    现在前台用html的话 文件的传输貌似又不是那么的方便了
+    可以寻找springmvc自动返回json格式数据的方法
+    @ResponseBody 注解使得springmvc框架默认返回json数据
+     这个方式与html的结合更友好
+
+接下来就是具体后台代码的编写

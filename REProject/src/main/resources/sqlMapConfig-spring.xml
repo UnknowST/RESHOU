@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--定义别名-->
+    <typeAliases>
+      <!--采用pavkge的方式取别名报错 不知为何-->
+      <!--  <package name="com.domain"></package>-->
+        <typeAlias type="com.daomain.User" alias="user"/>
+    </typeAliases>
+
+</configuration>
