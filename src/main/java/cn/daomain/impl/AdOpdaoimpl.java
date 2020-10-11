@@ -1,8 +1,6 @@
 package cn.daomain.impl;
 
-import cn.dao.Infor;
-import cn.dao.Replay;
-import cn.dao.User;
+import cn.dao.*;
 import cn.daomain.AdOpdao;
 import cn.jdbcutils.JDBCUtils;
 import org.springframework.dao.DataAccessException;
@@ -76,5 +74,68 @@ public class AdOpdaoimpl implements AdOpdao {
         map.put("Infor",list);
         map.put("Replay",list1);
         return map;
+    }
+
+    @Override
+    public int DeletrInfor(String num) {
+        int m=0;
+        int n=template.update("delete from infor where cid=?",num);
+        Replay rep=template.queryForObject("select * from replay where cid=?",new BeanPropertyRowMapper<Replay>(Replay.class),num);
+        if(rep!=null){
+            m=template.update("delete from replay where cid=?",num);
+
+        }else m=1;
+
+        if(n==1&&m==1) return 1;
+        else return 0;
+
+    }
+
+    @Override
+    public List<Bill> ReaderBill() {
+        return template.query("select * from bill",new BeanPropertyRowMapper<Bill>(Bill.class));
+    }
+
+    @Override
+    public Bill ReaderBillnum(String num) {
+        return template.queryForObject("select * from bill where snum=?",new BeanPropertyRowMapper<Bill>(Bill.class),num);
+    }
+
+    @Override
+    public int UpdateBill(Bill bill) {
+        return template.update("update bill set cost=?,place=?,useing=? where snum=?",bill.getCost(),bill.getPlace(),bill.getUseing(),bill.getSnum());
+    }
+
+    @Override
+    public int DeleteBill(String snum) {
+
+        return template.update("delete from bill where snum=?",snum);
+    }
+
+    @Override
+    public String SelectWorkerId() {
+        return String.valueOf(template.queryForInt("select MAX(id) from worker"));
+    }
+
+    @Override
+    public List<Worker> ReaderWork() {
+        return template.query("select * from worker",new BeanPropertyRowMapper<Worker>(Worker.class));
+    }
+
+    @Override
+    public int InsertWorker(Worker worker) {
+        return template.update("insert into worker(id,password,name,gender,phone,mail,position) values(?,?,?,?,?,?,?)",
+                worker.getid(),worker.getPassword(),worker.getName(),worker.getGender(),worker.getPhone(),worker.getMail(),worker.getPosition()
+                );
+    }
+
+    @Override
+    public int DeleteWorker(String snum) {
+        return template.update("delete from worker where snum=?",snum);
+    }
+
+    @Override
+    public Worker ReaderSNum(String snum) {
+        return template.queryForObject("select * from worker where snum=?",new BeanPropertyRowMapper<Worker>(Worker.class),snum);
     }
 }

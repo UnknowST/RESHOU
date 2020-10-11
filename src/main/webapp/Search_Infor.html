@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search_infor</title>
+    <script src="Js/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:'adoperation/Lookinfor_all',
+                type:'post',
+                dataType:'json',
+                async:false,
+                success:function (list) {
+                    $("#btn1").click(function () {
+                       var  userid=$("#userid").val();
+                        var place=$("#place").val();
+                      var   equip=$("#equip").val();
+                      var eval=$("#eval").val();
+                        var kai='<table id="b1" border="1" cellspacing="0"><th>序号</th>' +
+                            '<th>用户账号</th>' +
+                            '<th>地点</th>' +
+                            '<th>设备</th>' +
+                            '<th>详细信息</th>' +
+                            '<th>时间</th>' +
+                            '<th><select id="sta"><option>状态</option><option>待维修</option>' +
+                            '<option>已维修</option><option>正在维修</option></select></th>' +
+                            '<th>操作</th>'
+                        var jie='</table>'
+                        var li=" ",l2=' ',l3=" ",n=0;
+                        //监听select
+                        $("div select").change(function () {
+                            alert("change")
+                            console.log($("div select"))
+                        })
+
+                        //判断userid
+                        if(userid.length!=0&&place.length==0&&equip.length==0&&eval.length==0){
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].userid==userid){
+
+                                n++;
+                                li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                    '<td>'+list.Infor[i].userid +'</td>' +
+                                    '<td>'+list.Infor[i].place +'</td>' +
+                                    '<td>'+list.Infor[i].detail +'</td>' ;
+                                if(list.Infor[i].imagepath==null){
+                                    l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                }
+                                else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                    '<td>'+list.Infor[i].createdate+'</td>'+
+                                    '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                    '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                    '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                l3+=li+l2;
+                            }}
+
+                        }
+                        //判断place
+                        if(userid.length==0&&place.length!=0&&equip.length==0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].place==place){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断equip
+                        if(userid.length==0&&place.length==0&&equip.length!=0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].equip==equip){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断eval
+                        if(userid.length==0&&place.length==0&&equip.length==0&&eval.length!=0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].evaluate==eval){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断userid,place
+                        if(userid.length!=0&&place.length!=0&&equip.length==0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].userid==userid&&list.Infor[i].place==place){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断 userid,equip
+                        if(userid.length!=0&&place.length==0&&equip.length!=0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].userid==userid&&list.Infor[i].equip==equip){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断userid,eval
+                        if(userid.length!=0&&place.length==0&&equip.length==0&&eval.length!=0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].userid==userid&&list.Infor[i].evaluate==eval){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断place,equip
+                        if(userid.length==0&&place.length!=0&&equip.length!=0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].place==place&&list.Infor[i].equip==equip){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断place,eval
+                        if(userid.length==0&&place.length!=0&&equip.length==0&&eval.length!=0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].place==place&&list.Infor[i].evaluate){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断 equip,eval
+                        if(userid.length==0&&place.length==0&&equip.length!=0&&eval.length!=0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].equip==equip&&list.Infor[i].evaluate==eval){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //判断 userid,place,equip,eval
+                        if(userid.length!=0&&place.length!=0&&equip.length!=0&&eval.length!=0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+                                if(list.Infor[i].place==place&&list.Infor[i].userid&&list.Infor[i].equip&&list.Infor[i].evaluat==eval){
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }}
+
+                        }
+                        //都为空
+                        if(userid.length==0&&place.length==0&&equip.length==0&&eval.length==0){
+                            n=0;
+                            for(var i=0;i<list.Infor.length;i++){
+
+
+
+                                    n++;
+                                    li='<tr id="'+i+'"><td>'+n+'</td>' +
+                                        '<td>'+list.Infor[i].userid +'</td>' +
+                                        '<td>'+list.Infor[i].place +'</td>' +
+                                        '<td>'+list.Infor[i].detail +'</td>' ;
+                                    if(list.Infor[i].imagepath==null){
+                                        l2= '<td>'+"用户没有上传图片说明..." +'</td>' +
+                                            '<td>'+list.Infor[i].createdate+'</td>'+
+                                            '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+
+                                            '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                            '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    }
+                                    else l2='<td><img width="100px" height="80px" src="'+list.Infor[i].imagepath +'" alt="图片走丢了...."></td>' +
+                                        '<td>'+list.Infor[i].createdate+'</td>'+
+                                        '<td id="'+i+'">'+list.Infor[i].state+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'">详情</a>' +
+                                        '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>';
+                                    l3+=li+l2;
+                                }
+
+                        }
+                        if(l2.length==0){
+
+                            alert("结果为空。")   //待修改
+                        }
+                        else {
+                        $("#div1").html(kai+l3+jie)
+                        }
+                        //监听超链接
+                        //删除
+                        var obj = $("a:odd");  //选择基数的超链接
+
+                        for (var j = obj.length - 1; j >= 0; j--) {
+
+                            obj[j].onclick = function () {
+                                //var couns = $("#option option:selected").text();
+                                var num = list.Infor[this.id].cid;  //获取编号
+                                var t1=this.id;
+                                $.ajax({
+                                    url: "adoperation/DeleteInfor",
+                                    type: "post",
+                                    data: {"num":num},
+                                    dataType: "json",
+                                    async: false,
+                                    success: function (data) {
+                                        if (data.flag == "1") {
+                                            alert("删除成功")
+                                            $("tr[id='"+t1+"']").empty()
+                                        } else {
+                                            alert(data.errorMsg)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                        //查看详情
+                        var obj = $("a:even");  //选择偶数的超链接
+                        for (var j = obj.length - 1; j >= 0; j--) {
+                            obj[j].onclick = function () {
+                                //var couns = $("#option option:selected").text();
+                                var num = list.Infor[this.id].cid;  //获取编号
+                                var t1=this.id;
+
+                                // <a href='+"Infor_details.html?num="+data[i].cid+'>
+                                window.location.href="Infor_details.html?num="+num;
+
+                            }
+                        }
+
+
+
+                    })
+
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<table >
+    <tr ><td>用户账号</td>
+    <td><input type="text" id="userid" placeholder="请输入需要查找的用户账号"></td>
+        <td rowspan="4"><input type="button" id="btn1" value="搜索"></td>
+    </tr>
+    <tr><td>地点</td>
+        <td><input type="text" id="place" placeholder="请输入需要查找的地点"></td>
+
+    </tr>
+    <tr><td>设备</td>
+        <td><input type="text" id="equip" placeholder="请输入需要查找的设备"></td>
+
+    </tr>
+    <tr><td>评分</td>
+        <td><input type="text" id="eval" placeholder="请输入需要查找的评分"></td>
+
+    </tr>
+
+</table>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchbill</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:'adoperation/ReaderBill',
+                type:'get',
+                async:false,
+                dataType:'json',
+                success:function (list) {
+                    //先输出所有的账单
+                    var kai='<table border="1" cellspacing="0" id="td1"><th>序号</th>' +
+                        '<th>单号</th>' +
+                        '<th>金额</th>' +
+                        '<th>花费地点</th>' +
+                        '<th>用途</th>' +
+                        '<th>开单师傅账号</th>' +
+                        '<th>开单时间</th>' +
+                        '<th>操作</th>'
+                    var jie='</table>'
+                    var l1=" ",n=0;
+                    for(var i=0;i<list.length;i++){
+                        n++;
+                        l1+='<tr><td>'+n+'</td>' +
+                            '<td>'+list[i].num+'</td>' +
+                            '<td>'+list[i].cost+'</td>' +
+                            '<td>'+list[i].place+'</td>' +
+                        '<td>'+list[i].useing+'</td>' +
+                        '<td>'+list[i].workerid+'</td>' +
+                            '<td>'+list[i].createtime+'</td>' +
+                            '<td><a href="javascript:void(0)" id="'+i+'">修改</a>' +
+                            '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">删除</a></td></tr>'
+
+                    }
+                    $("#div1").html(kai+l1+jie)
+                    //监听超链接
+                    var obj=$("a:even")  //选择偶数的超链接
+                    for (var j = obj.length - 1; j >= 0; j--) {
+
+                        obj[j].onclick = function () {
+                           var num = list[this.id].snum;  //获取编号
+                            window.location.href="ModifBill.html?num="+num;
+                        }
+                    }
+
+
+                    var obj1=$("a:odd")
+                    for (var j = obj1.length - 1; j >= 0; j--) {
+
+                        obj1[j].onclick = function () {
+                            var num = list[this.id].snum;  //获取编号
+                            $.ajax({
+                                url: 'adoperation/DeleteBill',
+                                data: {"num": num},
+                                dataType: 'json',
+                                type: 'post',
+                                async: false,
+                                success: function (data) {
+                                    if (data.flag == 1) {
+                                        alert("删除成功!")
+                                        window.history.go(0)    //刷新页面
+                                    } else {
+                                        alert(data.errorMsg)
+                                    }
+                                }
+                            })
+                        }
+                    }
+
+
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>账单号:</td>
+        <td><input type="text" id="num" placeholder="请输入账单号" ></td>
+        <td rowspan="3"><input type="button" id="btn1" value="搜索"></td>
+    </tr>
+    <tr>
+        <td>工人账号:</td>
+        <td><input type="text" id="workerid" placeholder="请输入工人账号"></td>
+    </tr>
+    <tr>
+        <td>日期:</td>
+        <td><input type="date" id="time" placeholder="选择时间"></td>
+    </tr>
+
+</table>
+<div id="div1"></div>
+</body>
+</html>

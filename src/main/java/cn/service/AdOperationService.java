@@ -1,6 +1,8 @@
 package cn.service;
 
+import cn.dao.Bill;
 import cn.dao.User;
+import cn.dao.Worker;
 
 import java.util.List;
 import java.util.Map;
@@ -45,4 +47,73 @@ public interface AdOperationService {
      * @return
      */
     Map<String,Object> lookmes();
+
+    /**
+     * 删除指定维修信息和回复信息
+     * @param num
+     * @return
+     */
+    int DeletrInfor(String num);
+
+    /**
+     * 读出所有的账单记录
+     * @return
+     */
+    List<Bill> ReaderBill() ;
+
+    /**
+     * 读出指定单号的账单记录
+     * @param num
+     * @return
+     */
+    Bill ReaderBillnum(String num);
+
+    /**
+     * 管理员更新bill信息
+     * @param bill
+     * @return
+     */
+    int UpdateBill(Bill bill);
+
+    /**
+     * 管理员删除bill表的指定记录
+     * @param snum
+     * @return
+     */
+    int DeleteBill(String snum);
+
+    /**
+     * 查询当前工人的最后一个账号
+     * @return
+     */
+    String SelectWorkerId();
+
+    /**
+     * 读出worker表中的记录
+     * @return
+     */
+    List<Worker> ReaderWork();
+
+    /**
+     * 增加工人记录
+     * @param worker
+     * @return
+     */
+    int InsertWorker(Worker worker);
+
+    /**
+     * 删除指定的员工信息
+     * @param snum
+     * @return
+     */
+    int DeleteWorker(String snum);
+
+    /**
+     * 根据snum查找worker
+     * @param snum
+     * @return
+     */
+    Worker ReaderSNum(String snum);
+
+
 }

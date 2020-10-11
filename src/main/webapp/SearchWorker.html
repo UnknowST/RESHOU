@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchworker</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <link href="css/popup.css">
+    <script>
+        var  tlist,obj=null,obj1=null
+        $(function () {
+
+            $.ajax({
+                url:'adoperation/ReaderWorker',
+                type:'get',
+                dataType:'json',
+                async:'false',
+                success:function (list) {
+                    tlist=list;
+                  var li=" ",n=0;
+                  for(var i=0;i<list.length;i++){
+                      n++;
+                      li+='<tr id="tr1"><td>'+n+'</td>' +
+                          '<td>'+list[i].id+'</td>' +
+                          '<td>'+list[i].name+'</td>' +
+                          '<td>'+list[i].phone+'</td>' +
+                          '<td>'+list[i].gender+'</td>' +
+                          '<td>'+list[i].mail+'</td>' +
+                          '<td>'+list[i].position+'</td>' +
+                          '<td>'+list[i].workstate+'</td>' +
+                          '<td>'+list[i].sum_eval+'</td>' +
+                          '<td>'+list[i].createdate+'</td>' +
+                          '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                          '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'" onclick="modif()">修改信息</a></td></tr>'
+                  }
+                    $("#ta1 ").append(li)
+                    obj=$("a:even")  //获取0，2，4。。。
+                    obj1=$("a:odd")  //获取1,3,5...
+                    aclick(obj,obj1);
+                    //监听性别选择框
+                    $("#gender").change(function () {
+                        //获取value
+                       var sex= $("#gender option:selected").val()
+                        var l1=" ";
+                        n=0;
+                        if(sex!=0){
+                        for(var i=0;i<list.length;i++){
+                            if(list[i].gender==sex){
+                            n++;
+                            l1+='<tr id="tr1"><td>'+n+'</td>' +
+                                '<td>'+list[i].id+'</td>' +
+                                '<td>'+list[i].name+'</td>' +
+                                '<td>'+list[i].phone+'</td>' +
+                                '<td>'+list[i].gender+'</td>' +
+                                '<td>'+list[i].mail+'</td>' +
+                                '<td>'+list[i].position+'</td>' +
+                                '<td>'+list[i].workstate+'</td>' +
+                                '<td>'+list[i].sum_eval+'</td>' +
+                                '<td>'+list[i].createdate+'</td>' +
+                                '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                                '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                        }}
+                            $("tr[id]").remove();
+                            $("#ta1").append(l1)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
+                        }else {
+                            $("tr[id]").remove();   //删除带有Id属性的tr
+                            $("#ta1").append(li)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
+                        }
+
+
+                    })
+                    //监听职位选择框的变化
+
+                    $("#posi").change(function () {
+                        var text=$("#posi option:selected").text();
+                        var l2=" ";
+                        n=0;
+                        if(text.length!=0){
+                            for(var i=0;i<list.length;i++){
+                                if(list[i].position==text){
+                                    n++;
+                                    l2+='<tr id="tr1"><td>'+n+'</td>' +
+                                        '<td>'+list[i].id+'</td>' +
+                                        '<td>'+list[i].name+'</td>' +
+                                        '<td>'+list[i].phone+'</td>' +
+                                        '<td>'+list[i].gender+'</td>' +
+                                        '<td>'+list[i].mail+'</td>' +
+                                        '<td>'+list[i].position+'</td>' +
+                                        '<td>'+list[i].workstate+'</td>' +
+                                        '<td>'+list[i].sum_eval+'</td>' +
+                                        '<td>'+list[i].createdate+'</td>' +
+                                        '<td><a href="javascript:void(0)" id="'+i+'" >删除</a>' +
+                                        '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="'+i+'">修改信息</a></td></tr>'
+                                }}
+                            $("tr[id]").remove();
+                            $("#ta1").append(l2)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
+                        }else {
+                            $("tr[id]").remove();   //删除带有Id属性的tr
+                            $("#ta1").append(li)
+                            obj=$("a:even")  //获取0，2，4。。。
+                            obj1=$("a:odd")  //获取1,3,5...
+                            aclick(obj,obj1);
+                        }
+                    })
+
+                }
+            })
+
+        })
+
+function aclick(obj,obj1){   //obj对应删除 obj1对于修改信息
+
+    for (var j = obj.length - 1; j >= 0; j--) {
+
+        obj[j].onclick = function () {
+            var num = tlist[this.id].snum;  //获取编号
+
+            $.ajax({
+                url:'adoperation/DeleteWorker',
+                data:{"snum":num},
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success:function (data){
+                    if(data.flag==1){
+                        alert("删除成功");
+                        window.history.go(0)    //刷新页面
+                    }else{
+                        alert(data.errorMsg);
+                    }
+                }
+            })
+
+        }
+    }
+
+
+    for (var i = obj1.length - 1; i >= 0; i--) {
+        obj1[i].onclick = function () {
+            var num = tlist[this.id].snum;  //获取编号
+            window.location.href="Admodifworker.html?num="+num;
+
+
+        }
+    }
+}
+
+
+    </script>
+</head>
+<body>
+
+
+
+<table>
+    <tr><td>账号:</td>
+        <td><input type="text" id="workerid"  ></td>
+        <td rowspan="4"><input type="button" value="搜索" id="btn1"></td>
+    </tr>
+    <tr><td>姓名:</td>
+        <td><input type="text" id="name"  ></td>
+    </tr>
+    <tr><td>职位:</td>
+        <td><input type="text" id="position"  ></td>
+    </tr>
+    <tr><td>性别:</td>
+        <td><input type="text" id="sex"  ></td>
+    </tr>
+</table>
+
+    <table id="ta1" border="1" cellspacing="0">
+        <th>序号</th>
+        <th>账号</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>性别<select id="gender">
+            <option value="0"></option>
+            <option value="M">男</option>
+            <option value="W">女</option>
+        </select></th>
+        <th>邮箱</th>
+        <th>职位<select id="posi">
+            <option value="0"></option>
+            <option>经理</option>
+            <option>普工</option>
+        </select></th>
+        <th>当班状态</th>
+        <th>评分</th>
+        <th>入职时间</th>
+        <th>操作</th>
+
+    </table>
+
+
+
+
+
+
+</body>
+</html>
